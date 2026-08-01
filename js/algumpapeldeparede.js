@@ -1,6 +1,6 @@
 // Álbum Papel de Parede Interactivity Script
 document.addEventListener('DOMContentLoaded', () => {
-  let currentCategory = 'Toulon'; // 'Toulon', 'Valence', 'Cassys', or 'Marrom'
+  let currentCategory = 'Toulon'; // 'Toulon', 'Valence', 'Cassys', 'Marrom', or 'Mica'
   let currentTagFilter = 'ALL';
   let searchQuery = '';
   let currentPage = 1;
@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'Madeira & Ripado', label: 'Madeira & Ripado' },
       { id: 'Texturizado', label: 'Texturizado' },
       { id: 'Liso', label: 'Liso' }
+    ],
+    Mica: [
+      { id: 'ALL', label: 'Todos (20)' },
+      { id: 'Mica & Brilho', label: 'Mica & Brilho' }
     ]
   };
 
@@ -61,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (currentCategory === 'Marrom') {
       return (typeof marromPhotosData !== 'undefined') ? marromPhotosData : [];
+    }
+    if (currentCategory === 'Mica') {
+      return (typeof micaPhotosData !== 'undefined') ? micaPhotosData : [];
     }
     return (typeof toulonPhotosData !== 'undefined') ? toulonPhotosData : [];
   }
@@ -117,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = filtered.length;
 
     if (resultsCount) {
-      const catLabel = (currentCategory === 'Marrom') ? 'Papéis Marrons' : `Coleção ${currentCategory}`;
+      const catLabel = (currentCategory === 'Marrom') ? 'Papéis Marrons' : (currentCategory === 'Mica') ? 'Papéis Mica' : `Coleção ${currentCategory}`;
       resultsCount.textContent = `Exibindo ${Math.min(currentPage * itemsPerPage, total)} de ${total} papéis de parede na ${catLabel}`;
     }
 
@@ -147,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'toulon-photo-card';
 
-      const catText = (currentCategory === 'Marrom') ? 'Papéis Marrons' : `Coleção ${currentCategory}`;
+      const catText = (currentCategory === 'Marrom') ? 'Papéis Marrons' : (currentCategory === 'Mica') ? 'Papéis Mica' : `Coleção ${currentCategory}`;
       const waMsg = encodeURIComponent(`Olá! Vi a foto do Papel de Parede (${item.desc}) - Código: ${item.code} na página Álbum Papel de Parede (${catText}) da Fabiojuniordecor e gostaria de solicitar um orçamento!`);
       const waUrl = `https://wa.me/5522992242189?text=${waMsg}`;
 
@@ -235,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (zoomModal && zoomImg) {
       zoomImg.src = item.url;
       if (zoomTitle) zoomTitle.textContent = item.desc;
-      const catText = (currentCategory === 'Marrom') ? 'Papéis Marrons' : `Coleção ${currentCategory}`;
+      const catText = (currentCategory === 'Marrom') ? 'Papéis Marrons' : (currentCategory === 'Mica') ? 'Papéis Mica' : `Coleção ${currentCategory}`;
       if (zoomCode) zoomCode.textContent = `Código: ${item.code} • ${catText}`;
       if (zoomWaBtn) {
         const waMsg = encodeURIComponent(`Olá! Gostaria de consultar o Papel de Parede (${item.desc}) - Código: ${item.code} (${catText})!`);
