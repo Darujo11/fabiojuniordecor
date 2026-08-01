@@ -1,0 +1,2438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="no-referrer" />
+<title>Design system — https://parisdecor.com.br/papel-de-parede/?mpage=5</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --ink: #F2F2F0;
+  --ink-dim: #8E8E88;
+  --ink-faint: #55554F;
+  --surface: #0A0A0B;
+  --surface-1: #121214;
+  --surface-2: #1A1A1D;
+  --line: rgba(255,255,255,0.08);
+  --accent: #E8E6E1;
+  --radius: 14px;
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  --serif: ui-serif, "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+html { -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0; background: var(--surface); color: var(--ink);
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding: 96px 32px 160px; }
+
+.masthead { border-bottom: 1px solid var(--line); padding-bottom: 56px; margin-bottom: 24px; }
+.masthead h1 {
+  font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 7vw, 76px);
+  line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 24px;
+}
+.masthead h1 em { font-style: italic; color: var(--ink-dim); }
+.masthead__meta {
+  display: flex; flex-wrap: wrap; gap: 8px 28px;
+  color: var(--ink-dim); font-size: 13px;
+}
+.masthead__meta a {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.block { padding: 72px 0; border-bottom: 1px solid var(--line); }
+.block:last-of-type { border-bottom: 0; }
+.block__head { margin-bottom: 36px; }
+.block__head h2 {
+  font-family: var(--serif); font-weight: 400; font-size: 30px;
+  letter-spacing: -0.01em; margin: 6px 0 0;
+}
+.eyebrow {
+  margin: 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.label {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); margin: 40px 0 16px;
+}
+.label:first-child { margin-top: 0; }
+.count {
+  display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px;
+  background: var(--surface-2); color: var(--ink-dim); letter-spacing: 0;
+}
+
+.grid { display: grid; gap: 14px; }
+.grid--swatch { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+.grid--radius { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.grid--shots { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+.swatch { margin: 0; }
+.swatch__chip {
+  height: 104px; border-radius: var(--radius); display: flex; align-items: flex-end;
+  padding: 12px; font-family: var(--mono); font-size: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.swatch figcaption { display: flex; flex-direction: column; gap: 2px; padding: 10px 2px 0; }
+.swatch figcaption strong { font-weight: 500; font-size: 13px; }
+/* Escopado ao figcaption de proposito: o <span> do chip carrega a cor de leitura
+   calculada inline, e um seletor mais amplo a sobrescreveria. */
+.swatch figcaption span { color: var(--ink-faint); font-size: 12px; }
+
+.palette-strip {
+  display: flex; flex-wrap: wrap; border-radius: var(--radius); overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.palette-strip__cell { flex: 1 0 40px; height: 56px; }
+
+.stack-list { display: flex; flex-direction: column; gap: 1px; background: var(--line);
+  border-radius: var(--radius); overflow: hidden; }
+.stack-list__row {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  background: var(--surface-1); padding: 16px 20px;
+}
+.stack-list__row code { font-family: var(--mono); font-size: 12px; color: var(--ink-dim); }
+.stack-list__row span { font-size: 20px; }
+
+.specimens { display: flex; flex-direction: column; gap: 4px; }
+.specimen { padding: 24px 0; border-top: 1px solid var(--line); }
+.specimen__meta {
+  display: flex; flex-wrap: wrap; gap: 16px; margin: 0 0 12px;
+  font-family: var(--mono); font-size: 11px; color: var(--ink-faint);
+}
+.specimen__meta .role { color: var(--ink); }
+.specimen__sample { margin: 0; color: var(--accent); }
+
+.ruler { display: flex; flex-direction: column; gap: 10px; }
+.ruler__row { display: flex; align-items: center; gap: 16px; }
+.ruler__value {
+  font-family: var(--mono); font-size: 12px; color: var(--ink-dim);
+  width: 56px; text-align: right;
+}
+.ruler__bar {
+  height: 10px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), rgba(232,230,225,0.25));
+}
+
+.radius { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.radius__box {
+  width: 100%; aspect-ratio: 1; background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.radius span { font-family: var(--mono); font-size: 12px; color: var(--ink-dim); }
+
+.shadow-plate {
+  display: grid; gap: 28px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  background: #F4F4F2; border-radius: var(--radius); padding: 36px;
+}
+.shadow { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.shadow__box { width: 100%; height: 84px; border-radius: 10px; background: #FFFFFF; }
+.shadow code {
+  font-family: var(--mono); font-size: 10.5px; color: #55554F; text-align: center;
+  word-break: break-all;
+}
+
+.kv-list { display: flex; flex-direction: column; gap: 1px; margin: 0;
+  background: var(--line); border-radius: var(--radius); overflow: hidden; }
+.kv {
+  display: flex; align-items: center; gap: 24px;
+  background: var(--surface-1); padding: 16px 20px;
+}
+.kv dt { width: 140px; color: var(--ink-faint); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase; }
+.kv dd { margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--mono); font-size: 12px; padding: 4px 10px; border-radius: 999px;
+  background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.vars { display: flex; flex-direction: column; gap: 1px; background: var(--line);
+  border-radius: var(--radius); overflow: hidden; }
+.var-row { display: grid; grid-template-columns: 20px 1fr auto; gap: 16px;
+  align-items: center; background: var(--surface-1); padding: 12px 20px; }
+.var-row__chip { width: 20px; height: 20px; border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.14); }
+.var-row code { font-family: var(--mono); font-size: 12px; }
+.var-row__value { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+
+.gallery { margin-bottom: 48px; }
+.shot { margin: 0; }
+.shot__frame {
+  background: var(--surface-1); border-radius: var(--radius); overflow: hidden;
+  aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.shot__frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.shot figcaption { padding: 12px 2px 0; display: flex; flex-direction: column; gap: 4px; }
+.shot figcaption p { margin: 0; font-size: 13px; line-height: 1.45; }
+.shot figcaption span { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); }
+
+.colophon {
+  margin-top: 96px; padding-top: 28px; border-top: 1px solid var(--line);
+  color: var(--ink-faint); font-size: 12px; display: flex;
+  justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 56px 20px 96px; }
+  .kv { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .kv dt { width: auto; }
+}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="masthead">
+      <h1>Design system<br /><em>https://parisdecor.com.br/papel-de-parede/?mpage=5</em></h1>
+      <div class="masthead__meta">
+        <span>Extraído em 2026-07-31T16:35:11Z</span>
+        <span>1 página(s)</span>
+        <span>viewport 1440x900</span>
+        <span>88 imagem(ns)</span>
+        <a href="design-tokens.json">design-tokens.json</a>
+        <a href="design-system.md">design-system.md</a>
+      </div>
+    </header>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">01 — Paleta</p>
+        <h2>Cores</h2>
+      </header>
+      <div class="grid grid--swatch">
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#F9F5EC;color:#000000">
+          <span>#F9F5EC</span>
+        </div>
+        <figcaption>
+          <strong>Primária</strong>
+          <span>5 elementos</span>
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#A6846A;color:#000000">
+          <span>#A6846A</span>
+        </div>
+        <figcaption>
+          <strong>Secundária</strong>
+          <span>25 elementos</span>
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#906545;color:#FFFFFF">
+          <span>#906545</span>
+        </div>
+        <figcaption>
+          <strong>Secundária</strong>
+          <span>4 elementos</span>
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#4DC247;color:#000000">
+          <span>#4DC247</span>
+        </div>
+        <figcaption>
+          <strong>Secundária</strong>
+          <span>2 elementos</span>
+        </figcaption>
+      </figure>
+    </div><p class="label">Superfícies</p><div class="grid grid--swatch">
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#CCCCCC;color:#000000">
+          <span>#CCCCCC</span>
+        </div>
+        <figcaption>
+          <strong>Fundo</strong>
+          
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#FFFFFF;color:#000000">
+          <span>#FFFFFF</span>
+        </div>
+        <figcaption>
+          <strong>Fundo</strong>
+          
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#F9F5EC;color:#000000">
+          <span>#F9F5EC</span>
+        </div>
+        <figcaption>
+          <strong>Fundo</strong>
+          
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#4DC247;color:#000000">
+          <span>#4DC247</span>
+        </div>
+        <figcaption>
+          <strong>Fundo</strong>
+          
+        </figcaption>
+      </figure>
+    </div><p class="label">Texto</p><div class="grid grid--swatch">
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#000000;color:#FFFFFF">
+          <span>#000000</span>
+        </div>
+        <figcaption>
+          <strong>Texto</strong>
+          
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#906545;color:#FFFFFF">
+          <span>#906545</span>
+        </div>
+        <figcaption>
+          <strong>Texto</strong>
+          
+        </figcaption>
+      </figure>
+    
+      <figure class="swatch">
+        <div class="swatch__chip" style="background:#A6846A;color:#000000">
+          <span>#A6846A</span>
+        </div>
+        <figcaption>
+          <strong>Texto</strong>
+          
+        </figcaption>
+      </figure>
+    </div><p class="label">Paleta completa</p><div class="palette-strip"><span class="palette-strip__cell" style="background:#CCCCCC" title="#CCCCCC — 82 elementos"></span><span class="palette-strip__cell" style="background:#FFFFFF" title="#FFFFFF — 92 elementos"></span><span class="palette-strip__cell" style="background:#000000" title="#000000 — 101 elementos"></span><span class="palette-strip__cell" style="background:#F9F5EC" title="#F9F5EC — 5 elementos"></span><span class="palette-strip__cell" style="background:#A6846A" title="#A6846A — 25 elementos"></span><span class="palette-strip__cell" style="background:#E9E0DA" title="#E9E0DA — 11 elementos"></span><span class="palette-strip__cell" style="background:#906545" title="#906545 — 4 elementos"></span><span class="palette-strip__cell" style="background:#4DC247" title="#4DC247 — 2 elementos"></span></div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">02 — Escala</p>
+        <h2>Tipografia</h2>
+      </header>
+      <div class="stack-list"><div class="stack-list__row"><code>&quot;PT Sans Narrow&quot;, sans-serif</code><span style="font-family:&quot;PT Sans Narrow&quot;, sans-serif">Aa Bb Cc — 0123</span></div></div><div class="specimens">
+                <div class="specimen">
+                  <p class="specimen__meta">
+                    <span class="role">h1</span>
+                    <span>36px</span>
+                    <span>peso 400</span>
+                    <span>lh normal</span>
+                    <span>ls 0px</span>
+                  </p>
+                  <p class="specimen__sample" style="font-family:&quot;PT Sans Narrow&quot;, sans-serif;
+                     font-size:36px; font-weight:400;
+                     line-height:normal;
+                     letter-spacing:0px">
+                    O design nasce da restrição
+                  </p>
+                </div>
+                
+                <div class="specimen">
+                  <p class="specimen__meta">
+                    <span class="role">h5</span>
+                    <span>20px</span>
+                    <span>peso 400</span>
+                    <span>lh normal</span>
+                    <span>ls 0px</span>
+                  </p>
+                  <p class="specimen__sample" style="font-family:&quot;PT Sans Narrow&quot;, sans-serif;
+                     font-size:20px; font-weight:400;
+                     line-height:normal;
+                     letter-spacing:0px">
+                    O design nasce da restrição
+                  </p>
+                </div>
+                
+                <div class="specimen">
+                  <p class="specimen__meta">
+                    <span class="role">body</span>
+                    <span>16px</span>
+                    <span>peso 400</span>
+                    <span>lh 1.0</span>
+                    <span>ls 0px</span>
+                  </p>
+                  <p class="specimen__sample" style="font-family:&quot;PT Sans Narrow&quot;, sans-serif;
+                     font-size:16px; font-weight:400;
+                     line-height:1.0;
+                     letter-spacing:0px">
+                    O design nasce da restrição
+                  </p>
+                </div>
+                
+                <div class="specimen">
+                  <p class="specimen__meta">
+                    <span class="role">link</span>
+                    <span>16px</span>
+                    <span>peso 400</span>
+                    <span>lh normal</span>
+                    <span>ls 0px</span>
+                  </p>
+                  <p class="specimen__sample" style="font-family:&quot;PT Sans Narrow&quot;, sans-serif;
+                     font-size:16px; font-weight:400;
+                     line-height:normal;
+                     letter-spacing:0px">
+                    O design nasce da restrição
+                  </p>
+                </div>
+                </div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">03 — Ritmo</p>
+        <h2>Espaçamento</h2>
+      </header>
+      <p class="label">Base detectada: 5px</p><div class="ruler">
+        <div class="ruler__row">
+          <span class="ruler__value">5px</span>
+          <span class="ruler__bar" style="width:5px"></span>
+        </div>
+        
+        <div class="ruler__row">
+          <span class="ruler__value">10px</span>
+          <span class="ruler__bar" style="width:10px"></span>
+        </div>
+        
+        <div class="ruler__row">
+          <span class="ruler__value">15px</span>
+          <span class="ruler__bar" style="width:15px"></span>
+        </div>
+        
+        <div class="ruler__row">
+          <span class="ruler__value">20px</span>
+          <span class="ruler__bar" style="width:20px"></span>
+        </div>
+        </div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">04 — Forma</p>
+        <h2>Raios</h2>
+      </header>
+      <div class="grid grid--radius">
+        <div class="radius">
+          <div class="radius__box" style="border-radius:0px"></div>
+          <span>0px</span>
+        </div>
+        
+        <div class="radius">
+          <div class="radius__box" style="border-radius:4px"></div>
+          <span>4px</span>
+        </div>
+        </div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">05 — Elevação</p>
+        <h2>Sombras</h2>
+      </header>
+      <div class="shadow-plate">
+        <div class="shadow">
+          <div class="shadow__box" style="box-shadow:0px 0px 6px 0px rgba(0,0,0,0.3)"></div>
+          <code>0px 0px 6px 0px rgba(0,0,0,0.3)</code>
+        </div>
+        </div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">06 — Estrutura</p>
+        <h2>Layout</h2>
+      </header>
+      <dl class="kv-list"><div class="kv"><dt>Breakpoints</dt><dd><span class="chip">576px</span><span class="chip">768px</span></dd></div><div class="kv"><dt>Container</dt><dd><span class="chip">1440px</span></dd></div></dl>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">07 — Fonte primária</p>
+        <h2>Tokens declarados</h2>
+      </header>
+      <p class="label">Custom properties de cor declaradas pelo próprio site — estes não são inferidos.</p><div class="vars">
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000"></span>
+          <code>--accent-color</code>
+          <span class="var-row__value">#000000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000033"></span>
+          <code>--accent-color-opacity-20</code>
+          <span class="var-row__value">#00000033</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000"></span>
+          <code>--adbar-background</code>
+          <span class="var-row__value">#000000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--adbar-foreground</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000"></span>
+          <code>--button-background</code>
+          <span class="var-row__value">#000000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--button-foreground</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#dd7774"></span>
+          <code>--danger</code>
+          <span class="var-row__value">#dd7774</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f9f5ec"></span>
+          <code>--footer-background</code>
+          <span class="var-row__value">#f9f5ec</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#906545"></span>
+          <code>--footer-foreground</code>
+          <span class="var-row__value">#906545</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#90654533"></span>
+          <code>--footer-foreground-opacity-20</code>
+          <span class="var-row__value">#90654533</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#9065454D"></span>
+          <code>--footer-foreground-opacity-30</code>
+          <span class="var-row__value">#9065454D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#90654580"></span>
+          <code>--footer-foreground-opacity-50</code>
+          <span class="var-row__value">#90654580</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#90654599"></span>
+          <code>--footer-foreground-opacity-60</code>
+          <span class="var-row__value">#90654599</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#906545CC"></span>
+          <code>--footer-foreground-opacity-80</code>
+          <span class="var-row__value">#906545CC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f9f5ec"></span>
+          <code>--header-background</code>
+          <span class="var-row__value">#f9f5ec</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f9f5ec80"></span>
+          <code>--header-background-opacity-50</code>
+          <span class="var-row__value">#f9f5ec80</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#906545"></span>
+          <code>--header-foreground</code>
+          <span class="var-row__value">#906545</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#90654533"></span>
+          <code>--header-foreground-opacity-20</code>
+          <span class="var-row__value">#90654533</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#9065454D"></span>
+          <code>--header-foreground-opacity-30</code>
+          <span class="var-row__value">#9065454D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000"></span>
+          <code>--label-background</code>
+          <span class="var-row__value">#000000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--label-foreground</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--main-background</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF33"></span>
+          <code>--main-background-opacity-20</code>
+          <span class="var-row__value">#FFFFFF33</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF4D"></span>
+          <code>--main-background-opacity-30</code>
+          <span class="var-row__value">#FFFFFF4D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF80"></span>
+          <code>--main-background-opacity-50</code>
+          <span class="var-row__value">#FFFFFF80</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF99"></span>
+          <code>--main-background-opacity-60</code>
+          <span class="var-row__value">#FFFFFF99</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFFCC"></span>
+          <code>--main-background-opacity-80</code>
+          <span class="var-row__value">#FFFFFFCC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFFE6"></span>
+          <code>--main-background-opacity-90</code>
+          <span class="var-row__value">#FFFFFFE6</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000"></span>
+          <code>--main-foreground</code>
+          <span class="var-row__value">#000000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0000000D"></span>
+          <code>--main-foreground-opacity-05</code>
+          <span class="var-row__value">#0000000D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000014"></span>
+          <code>--main-foreground-opacity-08</code>
+          <span class="var-row__value">#00000014</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0000001A"></span>
+          <code>--main-foreground-opacity-10</code>
+          <span class="var-row__value">#0000001A</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000033"></span>
+          <code>--main-foreground-opacity-20</code>
+          <span class="var-row__value">#00000033</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0000004D"></span>
+          <code>--main-foreground-opacity-30</code>
+          <span class="var-row__value">#0000004D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000066"></span>
+          <code>--main-foreground-opacity-40</code>
+          <span class="var-row__value">#00000066</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000080"></span>
+          <code>--main-foreground-opacity-50</code>
+          <span class="var-row__value">#00000080</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00000099"></span>
+          <code>--main-foreground-opacity-60</code>
+          <span class="var-row__value">#00000099</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000CC"></span>
+          <code>--main-foreground-opacity-80</code>
+          <span class="var-row__value">#000000CC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000000E6"></span>
+          <code>--main-foreground-opacity-90</code>
+          <span class="var-row__value">#000000E6</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--newsletter-background</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#333333"></span>
+          <code>--newsletter-foreground</code>
+          <span class="var-row__value">#333333</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#333333CC"></span>
+          <code>--newsletter-foreground-opacity-80</code>
+          <span class="var-row__value">#333333CC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#4bb98c"></span>
+          <code>--success</code>
+          <span class="var-row__value">#4bb98c</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#D8446E"></span>
+          <code>--wallet-lib-auth_kl42bv0</code>
+          <span class="var-row__value">#D8446E</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0050C3"></span>
+          <code>--wallet-lib-auth_kl42bv1</code>
+          <span class="var-row__value">#0050C3</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00C87B"></span>
+          <code>--wallet-lib-auth_kl42bv10</code>
+          <span class="var-row__value">#00C87B</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 80, 195, .1)"></span>
+          <code>--wallet-lib-auth_kl42bv11</code>
+          <span class="var-row__value">rgba(0, 80, 195, .1)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-auth_kl42bv12</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(48, 49, 48, .42)"></span>
+          <code>--wallet-lib-auth_kl42bv16</code>
+          <span class="var-row__value">rgba(48, 49, 48, .42)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0059D5"></span>
+          <code>--wallet-lib-auth_kl42bv17</code>
+          <span class="var-row__value">#0059D5</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#337ADD"></span>
+          <code>--wallet-lib-auth_kl42bv18</code>
+          <span class="var-row__value">#337ADD</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0A0A0A"></span>
+          <code>--wallet-lib-auth_kl42bv19</code>
+          <span class="var-row__value">#0A0A0A</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-auth_kl42bv1a</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(255, 255, 255, .5)"></span>
+          <code>--wallet-lib-auth_kl42bv1b</code>
+          <span class="var-row__value">rgba(255, 255, 255, .5)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 0, 0, .2)"></span>
+          <code>--wallet-lib-auth_kl42bv1c</code>
+          <span class="var-row__value">rgba(0, 0, 0, .2)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 0, 0, 0)"></span>
+          <code>--wallet-lib-auth_kl42bv1d</code>
+          <span class="var-row__value">rgba(0, 0, 0, 0)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00409C"></span>
+          <code>--wallet-lib-auth_kl42bv2</code>
+          <span class="var-row__value">#00409C</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#003889"></span>
+          <code>--wallet-lib-auth_kl42bv3</code>
+          <span class="var-row__value">#003889</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#002861"></span>
+          <code>--wallet-lib-auth_kl42bv4</code>
+          <span class="var-row__value">#002861</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000814"></span>
+          <code>--wallet-lib-auth_kl42bv5</code>
+          <span class="var-row__value">#000814</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#F2F6FC"></span>
+          <code>--wallet-lib-auth_kl42bv6</code>
+          <span class="var-row__value">#F2F6FC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-auth_kl42bv7</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#F6F6F6"></span>
+          <code>--wallet-lib-auth_kl42bv8</code>
+          <span class="var-row__value">#F6F6F6</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f2f2f2"></span>
+          <code>--wallet-lib-auth_kl42bv9</code>
+          <span class="var-row__value">#f2f2f2</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#E7E7E7"></span>
+          <code>--wallet-lib-auth_kl42bva</code>
+          <span class="var-row__value">#E7E7E7</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#D1D1D1"></span>
+          <code>--wallet-lib-auth_kl42bvb</code>
+          <span class="var-row__value">#D1D1D1</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#B0B0B0"></span>
+          <code>--wallet-lib-auth_kl42bvc</code>
+          <span class="var-row__value">#B0B0B0</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#888888"></span>
+          <code>--wallet-lib-auth_kl42bvd</code>
+          <span class="var-row__value">#888888</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#777777"></span>
+          <code>--wallet-lib-auth_kl42bve</code>
+          <span class="var-row__value">#777777</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#5D5D5D"></span>
+          <code>--wallet-lib-auth_kl42bvf</code>
+          <span class="var-row__value">#5D5D5D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#343537"></span>
+          <code>--wallet-lib-auth_kl42bvg</code>
+          <span class="var-row__value">#343537</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0A0A0A"></span>
+          <code>--wallet-lib-auth_kl42bvh</code>
+          <span class="var-row__value">#0A0A0A</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .3)"></span>
+          <code>--wallet-lib-auth_kl42bvi</code>
+          <span class="var-row__value">rgba(10, 10, 10, .3)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .6)"></span>
+          <code>--wallet-lib-auth_kl42bvj</code>
+          <span class="var-row__value">rgba(10, 10, 10, .6)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#6D6D6D"></span>
+          <code>--wallet-lib-auth_kl42bvk</code>
+          <span class="var-row__value">#6D6D6D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .2)"></span>
+          <code>--wallet-lib-auth_kl42bvl</code>
+          <span class="var-row__value">rgba(10, 10, 10, .2)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0059D5"></span>
+          <code>--wallet-lib-auth_kl42bvm</code>
+          <span class="var-row__value">#0059D5</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#EF4444"></span>
+          <code>--wallet-lib-auth_kl42bvn</code>
+          <span class="var-row__value">#EF4444</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#DC2626"></span>
+          <code>--wallet-lib-auth_kl42bvo</code>
+          <span class="var-row__value">#DC2626</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .1)"></span>
+          <code>--wallet-lib-auth_kl42bvp</code>
+          <span class="var-row__value">rgba(10, 10, 10, .1)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#F2F7FD"></span>
+          <code>--wallet-lib-auth_kl42bvq</code>
+          <span class="var-row__value">#F2F7FD</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#db3d3d"></span>
+          <code>--wallet-lib-auth_kl42bvr</code>
+          <span class="var-row__value">#db3d3d</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#fedcdc"></span>
+          <code>--wallet-lib-auth_kl42bvs</code>
+          <span class="var-row__value">#fedcdc</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#330000"></span>
+          <code>--wallet-lib-auth_kl42bvt</code>
+          <span class="var-row__value">#330000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f7c678"></span>
+          <code>--wallet-lib-auth_kl42bvu</code>
+          <span class="var-row__value">#f7c678</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#fef2dc"></span>
+          <code>--wallet-lib-auth_kl42bvv</code>
+          <span class="var-row__value">#fef2dc</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#523200"></span>
+          <code>--wallet-lib-auth_kl42bvw</code>
+          <span class="var-row__value">#523200</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#E9F4FC"></span>
+          <code>--wallet-lib-auth_kl42bvx</code>
+          <span class="var-row__value">#E9F4FC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#AFD8F3"></span>
+          <code>--wallet-lib-auth_kl42bvy</code>
+          <span class="var-row__value">#AFD8F3</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#004D70"></span>
+          <code>--wallet-lib-auth_kl42bvz</code>
+          <span class="var-row__value">#004D70</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#D8446E"></span>
+          <code>--wallet-lib-storefront_fqswqo0</code>
+          <span class="var-row__value">#D8446E</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0050C3"></span>
+          <code>--wallet-lib-storefront_fqswqo1</code>
+          <span class="var-row__value">#0050C3</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(48, 49, 48, .42)"></span>
+          <code>--wallet-lib-storefront_fqswqo10</code>
+          <span class="var-row__value">rgba(48, 49, 48, .42)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0059D6"></span>
+          <code>--wallet-lib-storefront_fqswqo11</code>
+          <span class="var-row__value">#0059D6</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0A0A0A"></span>
+          <code>--wallet-lib-storefront_fqswqo12</code>
+          <span class="var-row__value">#0A0A0A</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-storefront_fqswqo13</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(255, 255, 255, .5)"></span>
+          <code>--wallet-lib-storefront_fqswqo14</code>
+          <span class="var-row__value">rgba(255, 255, 255, .5)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 0, 0, .2)"></span>
+          <code>--wallet-lib-storefront_fqswqo15</code>
+          <span class="var-row__value">rgba(0, 0, 0, .2)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 0, 0, 0)"></span>
+          <code>--wallet-lib-storefront_fqswqo16</code>
+          <span class="var-row__value">rgba(0, 0, 0, 0)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00409C"></span>
+          <code>--wallet-lib-storefront_fqswqo2</code>
+          <span class="var-row__value">#00409C</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#003889"></span>
+          <code>--wallet-lib-storefront_fqswqo3</code>
+          <span class="var-row__value">#003889</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#002861"></span>
+          <code>--wallet-lib-storefront_fqswqo4</code>
+          <span class="var-row__value">#002861</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#000814"></span>
+          <code>--wallet-lib-storefront_fqswqo5</code>
+          <span class="var-row__value">#000814</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#F2F6FC"></span>
+          <code>--wallet-lib-storefront_fqswqo6</code>
+          <span class="var-row__value">#F2F6FC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-storefront_fqswqo7</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#F6F6F6"></span>
+          <code>--wallet-lib-storefront_fqswqo8</code>
+          <span class="var-row__value">#F6F6F6</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f2f2f2"></span>
+          <code>--wallet-lib-storefront_fqswqo9</code>
+          <span class="var-row__value">#f2f2f2</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#E7E7E7"></span>
+          <code>--wallet-lib-storefront_fqswqoa</code>
+          <span class="var-row__value">#E7E7E7</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#D1D1D1"></span>
+          <code>--wallet-lib-storefront_fqswqob</code>
+          <span class="var-row__value">#D1D1D1</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#B0B0B0"></span>
+          <code>--wallet-lib-storefront_fqswqoc</code>
+          <span class="var-row__value">#B0B0B0</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#888888"></span>
+          <code>--wallet-lib-storefront_fqswqod</code>
+          <span class="var-row__value">#888888</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#777777"></span>
+          <code>--wallet-lib-storefront_fqswqoe</code>
+          <span class="var-row__value">#777777</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#5D5D5D"></span>
+          <code>--wallet-lib-storefront_fqswqof</code>
+          <span class="var-row__value">#5D5D5D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#343537"></span>
+          <code>--wallet-lib-storefront_fqswqog</code>
+          <span class="var-row__value">#343537</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#0A0A0A"></span>
+          <code>--wallet-lib-storefront_fqswqoh</code>
+          <span class="var-row__value">#0A0A0A</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .3)"></span>
+          <code>--wallet-lib-storefront_fqswqoi</code>
+          <span class="var-row__value">rgba(10, 10, 10, .3)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(10, 10, 10, .6)"></span>
+          <code>--wallet-lib-storefront_fqswqoj</code>
+          <span class="var-row__value">rgba(10, 10, 10, .6)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#6D6D6D"></span>
+          <code>--wallet-lib-storefront_fqswqok</code>
+          <span class="var-row__value">#6D6D6D</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#db3d3d"></span>
+          <code>--wallet-lib-storefront_fqswqol</code>
+          <span class="var-row__value">#db3d3d</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#fedcdc"></span>
+          <code>--wallet-lib-storefront_fqswqom</code>
+          <span class="var-row__value">#fedcdc</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#330000"></span>
+          <code>--wallet-lib-storefront_fqswqon</code>
+          <span class="var-row__value">#330000</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#f7c678"></span>
+          <code>--wallet-lib-storefront_fqswqoo</code>
+          <span class="var-row__value">#f7c678</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#fef2dc"></span>
+          <code>--wallet-lib-storefront_fqswqop</code>
+          <span class="var-row__value">#fef2dc</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#523200"></span>
+          <code>--wallet-lib-storefront_fqswqoq</code>
+          <span class="var-row__value">#523200</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#E9F4FC"></span>
+          <code>--wallet-lib-storefront_fqswqor</code>
+          <span class="var-row__value">#E9F4FC</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#AFD8F3"></span>
+          <code>--wallet-lib-storefront_fqswqos</code>
+          <span class="var-row__value">#AFD8F3</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#004D70"></span>
+          <code>--wallet-lib-storefront_fqswqot</code>
+          <span class="var-row__value">#004D70</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#00C87B"></span>
+          <code>--wallet-lib-storefront_fqswqou</code>
+          <span class="var-row__value">#00C87B</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:rgba(0, 80, 195, .1)"></span>
+          <code>--wallet-lib-storefront_fqswqov</code>
+          <span class="var-row__value">rgba(0, 80, 195, .1)</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#FFFFFF"></span>
+          <code>--wallet-lib-storefront_fqswqow</code>
+          <span class="var-row__value">#FFFFFF</span>
+        </div>
+        
+        <div class="var-row">
+          <span class="var-row__chip" style="background:#dc8f38"></span>
+          <code>--warning</code>
+          <span class="var-row__value">#dc8f38</span>
+        </div>
+        </div>
+    </section>
+    
+    <section class="block">
+      <header class="block__head">
+        <p class="eyebrow">08 — Biblioteca</p>
+        <h2>Imagens</h2>
+      </header>
+      
+            <div class="gallery">
+              <p class="label">footer <span class="count">13</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/amex.png"
+                     alt="amex" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>amex</p>
+                <span>amex.png
+                 · 150&#215;93
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/boleto.png"
+                     alt="boleto" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>boleto</p>
+                <span>boleto.png
+                 · 1&#215;1
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/br-discover.png"
+                     alt="br_discover" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>br_discover</p>
+                <span>br-discover.png
+                 · 92&#215;58
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/br-elo.png"
+                     alt="br_elo" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>br_elo</p>
+                <span>br-elo.png
+                 · 150&#215;93
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/br-hipercard.png"
+                     alt="br_hipercard" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>br_hipercard</p>
+                <span>br-hipercard.png
+                 · 150&#215;93
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone-2.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone-2.svg
+                 · 21&#215;21
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone-3.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone-3.svg
+                 · 21&#215;21
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone-4.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone-4.svg
+                 · 21&#215;21
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone-5.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone-5.svg
+                 · 21&#215;21
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone-6.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone-6.svg
+                 · 1080&#215;120
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/icone.svg"
+                     alt="Logotipo exibido na seção footer" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção footer</p>
+                <span>icone.svg
+                 · 21&#215;21
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/mastercard.png"
+                     alt="mastercard" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>mastercard</p>
+                <span>mastercard.png
+                 · 150&#215;93
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/footer/visa.png"
+                     alt="visa" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>visa</p>
+                <span>visa.png
+                 · 150&#215;93
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+            <div class="gallery">
+              <p class="label">header <span class="count">5</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/header/icone-2.svg"
+                     alt="Logotipo exibido na seção header" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção header</p>
+                <span>icone-2.svg
+                 · 20&#215;20
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/header/icone-3.svg"
+                     alt="Logotipo exibido na seção header" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção header</p>
+                <span>icone-3.svg
+                 · 20&#215;20
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/header/icone-4.svg"
+                     alt="Logotipo exibido na seção header" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção header</p>
+                <span>icone-4.svg
+                 · 14&#215;14
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/header/icone.svg"
+                     alt="Logotipo exibido na seção header" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Logotipo exibido na seção header</p>
+                <span>icone.svg
+                 · 20&#215;20
+                </span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/header/paris-decor-importadora-e-distribuidora-de-papel-de-parede-e.webp"
+                     alt="Paris Decor - Importadora e Distribuidora de Papel de Parede e Revestimentos Premium" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Paris Decor - Importadora e Distribuidora de Papel de Parede e Revestimentos Premium</p>
+                <span>paris-decor-importadora-e-distribuidora-de-papel-de-parede-e.webp
+                 · 480&#215;192
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+            <div class="gallery">
+              <p class="label">js-category-body <span class="count">66</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-listras-azul-creme-e-branco-pds6014-comprar.webp"
+                     alt="Papel de Parede Listras Azul, Creme e Branco PDS6014 - comprar online" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Listras Azul, Creme e Branco PDS6014 - comprar online</p>
+                <span>papel-de-parede-listras-azul-creme-e-branco-pds6014-comprar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-listras-rosa-creme-e-marrom-pds6013-comprar.webp"
+                     alt="Papel de Parede Listras Rosa, Creme e Marrom PDS6013 - comprar online" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Listras Rosa, Creme e Marrom PDS6013 - comprar online</p>
+                <span>papel-de-parede-listras-rosa-creme-e-marrom-pds6013-comprar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-abstrato-azul-petroleo-com-brilho-b.webp"
+                     alt="Papel de Parede Vinílico Abstrato Azul Petróleo com Brilho Biarritz PDL5007" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Abstrato Azul Petróleo com Brilho Biarritz PDL5007</p>
+                <span>papel-de-parede-vinilico-abstrato-azul-petroleo-com-brilho-b.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-abstrato-bege-com-brilho-biarritz-p.webp"
+                     alt="Papel de Parede Vinílico Abstrato Bege com Brilho Biarritz PDL5003" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Abstrato Bege com Brilho Biarritz PDL5003</p>
+                <span>papel-de-parede-vinilico-abstrato-bege-com-brilho-biarritz-p.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-abstrato-cinza-com-brilho-biarritz.webp"
+                     alt="Papel de Parede Vinílico Abstrato Cinza com Brilho Biarritz PDL5001" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Abstrato Cinza com Brilho Biarritz PDL5001</p>
+                <span>papel-de-parede-vinilico-abstrato-cinza-com-brilho-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-abstrato-perola-com-brilho-biarritz.webp"
+                     alt="Papel de Parede Vinílico Abstrato Pérola com Brilho Biarritz PDL5002" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Abstrato Pérola com Brilho Biarritz PDL5002</p>
+                <span>papel-de-parede-vinilico-abstrato-perola-com-brilho-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-champagne-biarritz.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Champagne Biarritz PDD4303" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Champagne Biarritz PDD4303</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-champagne-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-cinza-claro-biarrit.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Cinza Claro Biarritz PDD9906" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Cinza Claro Biarritz PDD9906</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-cinza-claro-biarrit.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-cinza-com-prata-e-m.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Cinza com Prata e Marrom Biarritz PDD9901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Cinza com Prata e Marrom Biarritz PDD9901</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-cinza-com-prata-e-m.webp
+                 · 960&#215;952
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-dourado-com-azul-cl.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Dourado com Azul Claro Biarritz PDD9905" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Dourado com Azul Claro Biarritz PDD9905</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-dourado-com-azul-cl.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-dourado-com-azul-es.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Dourado com Azul Escuro Biarritz PDD9904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Dourado com Azul Escuro Biarritz PDD9904</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-dourado-com-azul-es.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-dourado-com-champag.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Dourado com Champagne Biarritz PDD9902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Dourado com Champagne Biarritz PDD9902</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-dourado-com-champag.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-marrom-com-cinza-bi.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Marrom com Cinza Biarritz PDD9903" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Marrom com Cinza Biarritz PDD9903</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-marrom-com-cinza-bi.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-off-white-biarritz.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Off White Biarritz PDD4301" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Off White Biarritz PDD4301</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-off-white-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-off-white-com-cinza.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Off White com Cinza Claro Biarritz PDD4304" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Off White com Cinza Claro Biarritz PDD4304</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-off-white-com-cinza.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-arabesco-damask-off-white-perolado.webp"
+                     alt="Papel de Parede Vinílico Arabesco Damask Off White Perolado Biarritz PDD4302" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Arabesco Damask Off White Perolado Biarritz PDD4302</p>
+                <span>papel-de-parede-vinilico-arabesco-damask-off-white-perolado.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-cimento-queimado-cinza-com-verde-bi.webp"
+                     alt="Papel de Parede Vinílico Cimento Queimado Cinza com Verde Biarritz PDL9307" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Cimento Queimado Cinza com Verde Biarritz PDL9307</p>
+                <span>papel-de-parede-vinilico-cimento-queimado-cinza-com-verde-bi.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-cimento-queimado-cinza-escuro-biarr.webp"
+                     alt="Papel de Parede Vinílico Cimento Queimado Cinza Escuro Biarritz PDL9306" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Cimento Queimado Cinza Escuro Biarritz PDL9306</p>
+                <span>papel-de-parede-vinilico-cimento-queimado-cinza-escuro-biarr.webp
+                 · 960&#215;960
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-couro-craquelado-bronze-biarritz-pd.webp"
+                     alt="Papel de Parede Vinílico Couro Craquelado Bronze Biarritz PDLM905" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Couro Craquelado Bronze Biarritz PDLM905</p>
+                <span>papel-de-parede-vinilico-couro-craquelado-bronze-biarritz-pd.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-couro-craquelado-cinza-ardosia-azul.webp"
+                     alt="Papel de Parede Vinílico Couro Craquelado Cinza Ardósia Azulado Biarritz PDLM903" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Couro Craquelado Cinza Ardósia Azulado Biarritz PDLM903</p>
+                <span>papel-de-parede-vinilico-couro-craquelado-cinza-ardosia-azul.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-couro-craquelado-cinza-azulado-clar.webp"
+                     alt="Papel de Parede Vinílico Couro Craquelado Cinza Azulado Claro Biarritz PDLM902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Couro Craquelado Cinza Azulado Claro Biarritz PDLM902</p>
+                <span>papel-de-parede-vinilico-couro-craquelado-cinza-azulado-clar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-couro-craquelado-cinza-brilhante-bi.webp"
+                     alt="Papel de Parede Vinílico Couro Craquelado Cinza Brilhante Biarritz PDLM904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Couro Craquelado Cinza Brilhante Biarritz PDLM904</p>
+                <span>papel-de-parede-vinilico-couro-craquelado-cinza-brilhante-bi.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-couro-craquelado-off-white-biarritz.webp"
+                     alt="Papel de Parede Vinílico Couro Craquelado Off White Biarritz PDLM901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Couro Craquelado Off White Biarritz PDLM901</p>
+                <span>papel-de-parede-vinilico-couro-craquelado-off-white-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-champagne-e-perola-biarritz.webp"
+                     alt="Papel de Parede Vinílico Floral Champagne e Pérola Biarritz PDF4201" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Champagne e Pérola Biarritz PDF4201</p>
+                <span>papel-de-parede-vinilico-floral-champagne-e-perola-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-azul-petroleo-e-dou.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Azul Petróleo e Dourado com Brilho Biarritz PDF2903" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Azul Petróleo e Dourado com Brilho Biarritz PDF2903</p>
+                <span>papel-de-parede-vinilico-floral-delicado-azul-petroleo-e-dou.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-cinza-e-rosa-com-br.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Cinza e Rosa com Brilho Biarritz PDF2902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Cinza e Rosa com Brilho Biarritz PDF2902</p>
+                <span>papel-de-parede-vinilico-floral-delicado-cinza-e-rosa-com-br.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-lilas-com-brilho-bi.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Lilás com Brilho Biarritz PDF2907" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Lilás com Brilho Biarritz PDF2907</p>
+                <span>papel-de-parede-vinilico-floral-delicado-lilas-com-brilho-bi.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-off-white-com-brilh.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Off White com Brilho Biarritz PDF1301" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Off White com Brilho Biarritz PDF1301</p>
+                <span>papel-de-parede-vinilico-floral-delicado-off-white-com-brilh.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-off-white-com-doura.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Off White com Dourado com Brilho Biarritz PDF2904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Off White com Dourado com Brilho Biarritz PDF2904</p>
+                <span>papel-de-parede-vinilico-floral-delicado-off-white-com-doura.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-delicado-off-white-e-rosa-co.webp"
+                     alt="Papel de Parede Vinílico Floral Delicado Off White e Rosa com Brilho Biarritz PDF2901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Delicado Off White e Rosa com Brilho Biarritz PDF2901</p>
+                <span>papel-de-parede-vinilico-floral-delicado-off-white-e-rosa-co.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-marrom-claro-biarritz-pdf360.webp"
+                     alt="Papel de Parede Vinílico Floral Marrom Claro Biarritz PDF3605" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Marrom Claro Biarritz PDF3605</p>
+                <span>papel-de-parede-vinilico-floral-marrom-claro-biarritz-pdf360.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-off-white-e-cinza-biarritz-p.webp"
+                     alt="Papel de Parede Vinílico Floral Off White e Cinza Biarritz PDF4202" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Off White e Cinza Biarritz PDF4202</p>
+                <span>papel-de-parede-vinilico-floral-off-white-e-cinza-biarritz-p.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-verde-envelhecido-e-azul-bia.webp"
+                     alt="Papel de Parede Vinílico Floral Verde Envelhecido e Azul Biarritz PDF3603" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Verde Envelhecido e Azul Biarritz PDF3603</p>
+                <span>papel-de-parede-vinilico-floral-verde-envelhecido-e-azul-bia.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-floral-verde-vivo-e-off-white-biarr.webp"
+                     alt="Papel de Parede Vinílico Floral Verde Vivo e Off White Biarritz PDF4204" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Floral Verde Vivo e Off White Biarritz PDF4204</p>
+                <span>papel-de-parede-vinilico-floral-verde-vivo-e-off-white-biarr.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-branco-algodao-biarritz-pdl99.webp"
+                     alt="Papel de Parede Vinílico Linho Branco Algodão Biarritz PDL9901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Branco Algodão Biarritz PDL9901</p>
+                <span>papel-de-parede-vinilico-linho-branco-algodao-biarritz-pdl99.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-cinza-ardosia-azulado-com-bri.webp"
+                     alt="Papel de Parede Vinílico Linho Cinza Ardósia Azulado com Brilho Biarritz PDL9909" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Cinza Ardósia Azulado com Brilho Biarritz PDL9909</p>
+                <span>papel-de-parede-vinilico-linho-cinza-ardosia-azulado-com-bri.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-cinza-azulado-claro-biarritz.webp"
+                     alt="Papel de Parede Vinílico Linho Cinza Azulado Claro Biarritz PDLZ002" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Cinza Azulado Claro Biarritz PDLZ002</p>
+                <span>papel-de-parede-vinilico-linho-cinza-azulado-claro-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-cinza-claro-envelhecido-com-b.webp"
+                     alt="Papel de Parede Vinílico Linho Cinza Claro Envelhecido com Brilho Biarritz PDL9908" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Cinza Claro Envelhecido com Brilho Biarritz PDL9908</p>
+                <span>papel-de-parede-vinilico-linho-cinza-claro-envelhecido-com-b.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-cinza-com-glitter-pdi0053-com.webp"
+                     alt="Papel de Parede Vinílico Linho Cinza com Glitter PDI0053 - comprar online" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Cinza com Glitter PDI0053 - comprar online</p>
+                <span>papel-de-parede-vinilico-linho-cinza-com-glitter-pdi0053-com.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-marrom-com-dourado-biarritz-p.webp"
+                     alt="Papel de Parede Vinílico Linho Marrom com Dourado Biarritz PDLZ003" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Marrom com Dourado Biarritz PDLZ003</p>
+                <span>papel-de-parede-vinilico-linho-marrom-com-dourado-biarritz-p.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-preto-grafite-e-dourado-biarr.webp"
+                     alt="Papel de Parede Vinílico Linho Preto Grafite e Dourado Biarritz PDL9905" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Preto Grafite e Dourado Biarritz PDL9905</p>
+                <span>papel-de-parede-vinilico-linho-preto-grafite-e-dourado-biarr.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-trama-castanho-marrom-biarrit.webp"
+                     alt="Papel de Parede Vinílico Linho Trama Castanho Marrom Biarritz PDL1024" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Trama Castanho Marrom Biarritz PDL1024</p>
+                <span>papel-de-parede-vinilico-linho-trama-castanho-marrom-biarrit.webp
+                 · 1024&#215;1023
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-trama-cinza-claro-biarritz-pd.webp"
+                     alt="Papel de Parede Vinílico Linho Trama Cinza Claro Biarritz PDL1022" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Trama Cinza Claro Biarritz PDL1022</p>
+                <span>papel-de-parede-vinilico-linho-trama-cinza-claro-biarritz-pd.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-trama-palha-biarritz-pdl1023.webp"
+                     alt="Papel de Parede Vinílico Linho Trama Palha Biarritz PDL1023" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Trama Palha Biarritz PDL1023</p>
+                <span>papel-de-parede-vinilico-linho-trama-palha-biarritz-pdl1023.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-verde-claro-biarritz-pdl9904.webp"
+                     alt="Papel de Parede Vinílico Linho Verde Claro Biarritz PDL9904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Verde Claro Biarritz PDL9904</p>
+                <span>papel-de-parede-vinilico-linho-verde-claro-biarritz-pdl9904.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-linho-verde-e-dourado-biarritz-pdl9.webp"
+                     alt="Papel de Parede Vinílico Linho Verde e Dourado Biarritz PDL9906" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Linho Verde e Dourado Biarritz PDL9906</p>
+                <span>papel-de-parede-vinilico-linho-verde-e-dourado-biarritz-pdl9.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-finas-champagne-com-brilho.webp"
+                     alt="Papel de Parede Vinílico Listras Finas Champagne com Brilho Biarritz PDS0705" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Finas Champagne com Brilho Biarritz PDS0705</p>
+                <span>papel-de-parede-vinilico-listras-finas-champagne-com-brilho.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-finas-cinza-com-brilho-biar.webp"
+                     alt="Papel de Parede Vinílico Listras Finas Cinza com Brilho Biarritz PDS0704" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Finas Cinza com Brilho Biarritz PDS0704</p>
+                <span>papel-de-parede-vinilico-listras-finas-cinza-com-brilho-biar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-finas-creme-com-brilho-biar.webp"
+                     alt="Papel de Parede Vinílico Listras Finas Creme com Brilho Biarritz PDS0707" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Finas Creme com Brilho Biarritz PDS0707</p>
+                <span>papel-de-parede-vinilico-listras-finas-creme-com-brilho-biar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-finas-preto-absoluto-biarri.webp"
+                     alt="Papel de Parede Vinílico Listras Finas Preto Absoluto Biarritz PDS2142" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Finas Preto Absoluto Biarritz PDS2142</p>
+                <span>papel-de-parede-vinilico-listras-finas-preto-absoluto-biarri.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-largas-azul-escuro-biarritz.webp"
+                     alt="Papel de Parede Vinílico Listras Largas Azul Escuro Biarritz PDS6903" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Largas Azul Escuro Biarritz PDS6903</p>
+                <span>papel-de-parede-vinilico-listras-largas-azul-escuro-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-largas-cinza-claro-biarritz.webp"
+                     alt="Papel de Parede Vinílico Listras Largas Cinza Claro Biarritz PDS6904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Largas Cinza Claro Biarritz PDS6904</p>
+                <span>papel-de-parede-vinilico-listras-largas-cinza-claro-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-largas-marrom-claro-biarrit.webp"
+                     alt="Papel de Parede Vinílico Listras Largas Marrom Claro Biarritz PDS6905" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Largas Marrom Claro Biarritz PDS6905</p>
+                <span>papel-de-parede-vinilico-listras-largas-marrom-claro-biarrit.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-largas-rosa-claro-biarritz.webp"
+                     alt="Papel de Parede Vinílico Listras Largas Rosa Claro Biarritz PDS6902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Largas Rosa Claro Biarritz PDS6902</p>
+                <span>papel-de-parede-vinilico-listras-largas-rosa-claro-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-listras-largas-verde-erva-doce-biar.webp"
+                     alt="Papel de Parede Vinílico Listras Largas Verde Erva-Doce Biarritz PDS6901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Listras Largas Verde Erva-Doce Biarritz PDS6901</p>
+                <span>papel-de-parede-vinilico-listras-largas-verde-erva-doce-biar.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-madeira-carvalho-claro-biarritz-pdt.webp"
+                     alt="Papel de Parede Vinílico Madeira Carvalho Claro Biarritz PDT0303" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Madeira Carvalho Claro Biarritz PDT0303</p>
+                <span>papel-de-parede-vinilico-madeira-carvalho-claro-biarritz-pdt.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-madeira-cinza-claro-biarritz-pdt030.webp"
+                     alt="Papel de Parede Vinílico Madeira Cinza Claro Biarritz PDT0304" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Madeira Cinza Claro Biarritz PDT0304</p>
+                <span>papel-de-parede-vinilico-madeira-cinza-claro-biarritz-pdt030.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-madeira-nogueira-classico-biarritz.webp"
+                     alt="Papel de Parede Vinílico Madeira Nogueira Clássico Biarritz PDT0307" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Madeira Nogueira Clássico Biarritz PDT0307</p>
+                <span>papel-de-parede-vinilico-madeira-nogueira-classico-biarritz.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-travertino-areia-claro-biarritz-pdl.webp"
+                     alt="Papel de Parede Vinílico Travertino Areia Claro Biarritz PDL9907" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Travertino Areia Claro Biarritz PDL9907</p>
+                <span>papel-de-parede-vinilico-travertino-areia-claro-biarritz-pdl.webp
+                 · 1024&#215;1026
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-travertino-marrom-cafe-biarritz-pdl.webp"
+                     alt="Papel de Parede Vinílico Travertino Marrom Café Biarritz PDLZ222" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Travertino Marrom Café Biarritz PDLZ222</p>
+                <span>papel-de-parede-vinilico-travertino-marrom-cafe-biarritz-pdl.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-travertino-off-white-e-cinza-biarri.webp"
+                     alt="Papel de Parede Vinílico Travertino Off White e Cinza Biarritz PDL9902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Travertino Off White e Cinza Biarritz PDL9902</p>
+                <span>papel-de-parede-vinilico-travertino-off-white-e-cinza-biarri.webp
+                 · 1024&#215;1023
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-xadrez-azul-escuro-biarritz-pdx9903.webp"
+                     alt="Papel de Parede Vinílico Xadrez Azul Escuro Biarritz PDX9903" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Xadrez Azul Escuro Biarritz PDX9903</p>
+                <span>papel-de-parede-vinilico-xadrez-azul-escuro-biarritz-pdx9903.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-xadrez-cinza-claro-biarritz-pdx9904.webp"
+                     alt="Papel de Parede Vinílico Xadrez Cinza Claro Biarritz PDX9904" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Xadrez Cinza Claro Biarritz PDX9904</p>
+                <span>papel-de-parede-vinilico-xadrez-cinza-claro-biarritz-pdx9904.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-xadrez-marrom-claro-biarritz-pdx990.webp"
+                     alt="Papel de Parede Vinílico Xadrez Marrom Claro Biarritz PDX9905" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Xadrez Marrom Claro Biarritz PDX9905</p>
+                <span>papel-de-parede-vinilico-xadrez-marrom-claro-biarritz-pdx990.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-xadrez-rosa-claro-biarritz-pdx9902.webp"
+                     alt="Papel de Parede Vinílico Xadrez Rosa Claro Biarritz PDX9902" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Xadrez Rosa Claro Biarritz PDX9902</p>
+                <span>papel-de-parede-vinilico-xadrez-rosa-claro-biarritz-pdx9902.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-body/papel-de-parede-vinilico-xadrez-verde-erva-doce-biarritz-pdx.webp"
+                     alt="Papel de Parede Vinílico Xadrez Verde Erva-Doce Biarritz PDX9901" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Xadrez Verde Erva-Doce Biarritz PDX9901</p>
+                <span>papel-de-parede-vinilico-xadrez-verde-erva-doce-biarritz-pdx.webp
+                 · 1024&#215;1024
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+            <div class="gallery">
+              <p class="label">js-category-controls <span class="count">1</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/js-category-controls/icone.svg"
+                     alt="Ícone vetorial na seção js category controls" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Ícone vetorial na seção js category controls</p>
+                <span>icone.svg
+                 · 21&#215;19
+                </span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+            <div class="gallery">
+              <p class="label">meta <span class="count">2</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/meta/logo-1253694256237755440-1773922833-d87e9f07b07201b9b9cf82ff.ico"
+                     alt="favicon" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>favicon</p>
+                <span>logo-1253694256237755440-1773922833-d87e9f07b07201b9b9cf82ff.ico
+                 · 128&#215;128
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/meta/logo-3575616162860839955-1773938382-27bd5c0e7b2135d3f9f4591f.png"
+                     alt="Papel de Parede Vinílico Importado" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Papel de Parede Vinílico Importado</p>
+                <span>logo-3575616162860839955-1773938382-27bd5c0e7b2135d3f9f4591f.png
+                 · 575&#215;230
+                 · terceiros</span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+            <div class="gallery">
+              <p class="label">sem-secao <span class="count">1</span></p>
+              <div class="grid grid--shots">
+            <figure class="shot">
+              <div class="shot__frame">
+                <img src="images/sem-secao/icone.svg"
+                     alt="Ícone vetorial na seção sem secao" loading="lazy" />
+              </div>
+              <figcaption>
+                <p>Ícone vetorial na seção sem secao</p>
+                <span>icone.svg
+                 · 45&#215;45
+                </span>
+              </figcaption>
+            </figure>
+            </div>
+            </div>
+            
+    </section>
+    
+    <footer class="colophon">
+      <span>SDesign — extração a partir do CSS computado, não do HTML estático.</span>
+      <span>Campos não detectados saem vazios, nunca inventados.</span>
+    </footer>
+  </main>
+</body>
+</html>

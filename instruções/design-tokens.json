@@ -1,0 +1,283 @@
+{
+  "source": {
+    "url": "https://parisdecor.com.br/papel-de-parede/?mpage=5",
+    "extractedAt": "2026-07-31T16:35:11Z",
+    "pagesCrawled": 1,
+    "viewport": "1440x900"
+  },
+  "colors": {
+    "primary": {
+      "hex": "#F9F5EC",
+      "rgb": "249,245,236",
+      "usage": 5
+    },
+    "secondary": [
+      {
+        "hex": "#A6846A",
+        "rgb": "166,132,106",
+        "usage": 25
+      },
+      {
+        "hex": "#906545",
+        "rgb": "144,101,69",
+        "usage": 4
+      },
+      {
+        "hex": "#4DC247",
+        "rgb": "77,194,71",
+        "usage": 2
+      }
+    ],
+    "background": [
+      "#CCCCCC",
+      "#FFFFFF",
+      "#F9F5EC",
+      "#4DC247"
+    ],
+    "text": [
+      "#000000",
+      "#906545",
+      "#A6846A"
+    ],
+    "palette": [
+      {
+        "hex": "#CCCCCC",
+        "rgb": "204,204,204",
+        "usage": 82
+      },
+      {
+        "hex": "#FFFFFF",
+        "rgb": "255,255,255",
+        "usage": 92
+      },
+      {
+        "hex": "#000000",
+        "rgb": "0,0,0",
+        "usage": 101
+      },
+      {
+        "hex": "#F9F5EC",
+        "rgb": "249,245,236",
+        "usage": 5
+      },
+      {
+        "hex": "#A6846A",
+        "rgb": "166,132,106",
+        "usage": 25
+      },
+      {
+        "hex": "#E9E0DA",
+        "rgb": "233,224,218",
+        "usage": 11
+      },
+      {
+        "hex": "#906545",
+        "rgb": "144,101,69",
+        "usage": 4
+      },
+      {
+        "hex": "#4DC247",
+        "rgb": "77,194,71",
+        "usage": 2
+      }
+    ]
+  },
+  "typography": {
+    "fontFamilies": [
+      "\"PT Sans Narrow\", sans-serif"
+    ],
+    "scale": [
+      {
+        "role": "h1",
+        "sizePx": 36.0,
+        "weight": 400,
+        "lineHeight": null,
+        "letterSpacingPx": 0.0,
+        "family": "\"PT Sans Narrow\", sans-serif"
+      },
+      {
+        "role": "h5",
+        "sizePx": 20.0,
+        "weight": 400,
+        "lineHeight": null,
+        "letterSpacingPx": 0.0,
+        "family": "\"PT Sans Narrow\", sans-serif"
+      },
+      {
+        "role": "body",
+        "sizePx": 16.0,
+        "weight": 400,
+        "lineHeight": 1.0,
+        "letterSpacingPx": 0.0,
+        "family": "\"PT Sans Narrow\", sans-serif"
+      },
+      {
+        "role": "link",
+        "sizePx": 16.0,
+        "weight": 400,
+        "lineHeight": null,
+        "letterSpacingPx": 0.0,
+        "family": "\"PT Sans Narrow\", sans-serif"
+      }
+    ]
+  },
+  "spacing": {
+    "scalePx": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "base": 5
+  },
+  "radii": {
+    "scalePx": [
+      0,
+      4
+    ]
+  },
+  "shadows": [
+    "0px 0px 6px 0px rgba(0,0,0,0.3)"
+  ],
+  "layout": {
+    "breakpointsPx": [
+      576,
+      768
+    ],
+    "containerMaxPx": 1440,
+    "grid": null
+  },
+  "declaredVariables": {
+    "--wallet-lib-auth_kl42bvp": "rgba(10, 10, 10, .1)",
+    "--accent-color": "#000000",
+    "--wallet-lib-auth_kl42bvl": "rgba(10, 10, 10, .2)",
+    "--wallet-lib-auth_kl42bv10": "#00C87B",
+    "--wallet-lib-storefront_fqswqo4": "#002861",
+    "--newsletter-foreground": "#333333",
+    "--wallet-lib-auth_kl42bv9": "#f2f2f2",
+    "--wallet-lib-storefront_fqswqo10": "rgba(48, 49, 48, .42)",
+    "--wallet-lib-auth_kl42bv1": "#0050C3",
+    "--wallet-lib-storefront_fqswqom": "#fedcdc",
+    "--footer-foreground-opacity-60": "#90654599",
+    "--main-foreground-opacity-40": "#00000066",
+    "--success": "#4bb98c",
+    "--wallet-lib-storefront_fqswqop": "#fef2dc",
+    "--label-foreground": "#FFFFFF",
+    "--wallet-lib-auth_kl42bvf": "#5D5D5D",
+    "--button-foreground": "#FFFFFF",
+    "--footer-foreground": "#906545",
+    "--wallet-lib-storefront_fqswqo3": "#003889",
+    "--wallet-lib-storefront_fqswqo11": "#0059D6",
+    "--wallet-lib-storefront_fqswqo16": "rgba(0, 0, 0, 0)",
+    "--main-foreground-opacity-30": "#0000004D",
+    "--main-foreground-opacity-05": "#0000000D",
+    "--main-background-opacity-90": "#FFFFFFE6",
+    "--main-foreground-opacity-20": "#00000033",
+    "--wallet-lib-auth_kl42bvx": "#E9F4FC",
+    "--wallet-lib-storefront_fqswqo6": "#F2F6FC",
+    "--wallet-lib-auth_kl42bv17": "#0059D5",
+    "--warning": "#dc8f38",
+    "--wallet-lib-storefront_fqswqol": "#db3d3d",
+    "--main-background-opacity-50": "#FFFFFF80",
+    "--header-foreground-opacity-20": "#90654533",
+    "--wallet-lib-auth_kl42bv3": "#003889",
+    "--newsletter-foreground-opacity-80": "#333333CC",
+    "--wallet-lib-auth_kl42bv7": "#FFFFFF",
+    "--wallet-lib-auth_kl42bvh": "#0A0A0A",
+    "--wallet-lib-storefront_fqswqov": "rgba(0, 80, 195, .1)",
+    "--wallet-lib-storefront_fqswqod": "#888888",
+    "--button-background": "#000000",
+    "--wallet-lib-storefront_fqswqo14": "rgba(255, 255, 255, .5)",
+    "--wallet-lib-auth_kl42bve": "#777777",
+    "--wallet-lib-auth_kl42bvu": "#f7c678",
+    "--danger": "#dd7774",
+    "--wallet-lib-storefront_fqswqob": "#D1D1D1",
+    "--wallet-lib-auth_kl42bv1d": "rgba(0, 0, 0, 0)",
+    "--wallet-lib-auth_kl42bv2": "#00409C",
+    "--wallet-lib-auth_kl42bv0": "#D8446E",
+    "--main-foreground-opacity-90": "#000000E6",
+    "--wallet-lib-auth_kl42bvw": "#523200",
+    "--wallet-lib-auth_kl42bvr": "#db3d3d",
+    "--header-background-opacity-50": "#f9f5ec80",
+    "--wallet-lib-auth_kl42bv4": "#002861",
+    "--wallet-lib-storefront_fqswqo0": "#D8446E",
+    "--wallet-lib-auth_kl42bv8": "#F6F6F6",
+    "--wallet-lib-storefront_fqswqof": "#5D5D5D",
+    "--main-foreground-opacity-50": "#00000080",
+    "--footer-background": "#f9f5ec",
+    "--wallet-lib-auth_kl42bvg": "#343537",
+    "--wallet-lib-storefront_fqswqo8": "#F6F6F6",
+    "--wallet-lib-storefront_fqswqo2": "#00409C",
+    "--main-background-opacity-80": "#FFFFFFCC",
+    "--wallet-lib-storefront_fqswqoe": "#777777",
+    "--wallet-lib-storefront_fqswqo9": "#f2f2f2",
+    "--wallet-lib-storefront_fqswqoh": "#0A0A0A",
+    "--header-foreground-opacity-30": "#9065454D",
+    "--wallet-lib-storefront_fqswqo12": "#0A0A0A",
+    "--main-foreground-opacity-80": "#000000CC",
+    "--main-background-opacity-30": "#FFFFFF4D",
+    "--wallet-lib-auth_kl42bvn": "#EF4444",
+    "--wallet-lib-auth_kl42bv16": "rgba(48, 49, 48, .42)",
+    "--wallet-lib-storefront_fqswqow": "#FFFFFF",
+    "--adbar-foreground": "#FFFFFF",
+    "--wallet-lib-auth_kl42bvi": "rgba(10, 10, 10, .3)",
+    "--wallet-lib-auth_kl42bv19": "#0A0A0A",
+    "--wallet-lib-auth_kl42bvs": "#fedcdc",
+    "--wallet-lib-auth_kl42bvj": "rgba(10, 10, 10, .6)",
+    "--wallet-lib-auth_kl42bvz": "#004D70",
+    "--wallet-lib-auth_kl42bv18": "#337ADD",
+    "--main-background": "#FFFFFF",
+    "--wallet-lib-auth_kl42bvy": "#AFD8F3",
+    "--main-foreground-opacity-60": "#00000099",
+    "--footer-foreground-opacity-20": "#90654533",
+    "--wallet-lib-auth_kl42bvb": "#D1D1D1",
+    "--wallet-lib-storefront_fqswqog": "#343537",
+    "--wallet-lib-auth_kl42bva": "#E7E7E7",
+    "--label-background": "#000000",
+    "--wallet-lib-storefront_fqswqo5": "#000814",
+    "--wallet-lib-storefront_fqswqot": "#004D70",
+    "--wallet-lib-storefront_fqswqo15": "rgba(0, 0, 0, .2)",
+    "--wallet-lib-storefront_fqswqok": "#6D6D6D",
+    "--wallet-lib-storefront_fqswqoq": "#523200",
+    "--main-background-opacity-20": "#FFFFFF33",
+    "--wallet-lib-storefront_fqswqon": "#330000",
+    "--wallet-lib-storefront_fqswqou": "#00C87B",
+    "--wallet-lib-storefront_fqswqo7": "#FFFFFF",
+    "--main-foreground-opacity-10": "#0000001A",
+    "--wallet-lib-auth_kl42bvt": "#330000",
+    "--wallet-lib-auth_kl42bv6": "#F2F6FC",
+    "--adbar-background": "#000000",
+    "--wallet-lib-storefront_fqswqoj": "rgba(10, 10, 10, .6)",
+    "--wallet-lib-auth_kl42bvk": "#6D6D6D",
+    "--wallet-lib-auth_kl42bvo": "#DC2626",
+    "--wallet-lib-auth_kl42bvm": "#0059D5",
+    "--newsletter-background": "#FFFFFF",
+    "--wallet-lib-auth_kl42bv1a": "#FFFFFF",
+    "--wallet-lib-auth_kl42bvq": "#F2F7FD",
+    "--wallet-lib-auth_kl42bvd": "#888888",
+    "--footer-foreground-opacity-50": "#90654580",
+    "--header-foreground": "#906545",
+    "--wallet-lib-auth_kl42bvc": "#B0B0B0",
+    "--wallet-lib-auth_kl42bv12": "#FFFFFF",
+    "--wallet-lib-storefront_fqswqos": "#AFD8F3",
+    "--wallet-lib-storefront_fqswqor": "#E9F4FC",
+    "--main-background-opacity-60": "#FFFFFF99",
+    "--wallet-lib-storefront_fqswqo1": "#0050C3",
+    "--header-background": "#f9f5ec",
+    "--main-foreground-opacity-08": "#00000014",
+    "--wallet-lib-storefront_fqswqoo": "#f7c678",
+    "--wallet-lib-storefront_fqswqo13": "#FFFFFF",
+    "--wallet-lib-storefront_fqswqoc": "#B0B0B0",
+    "--main-foreground": "#000000",
+    "--wallet-lib-storefront_fqswqoi": "rgba(10, 10, 10, .3)",
+    "--wallet-lib-auth_kl42bv11": "rgba(0, 80, 195, .1)",
+    "--wallet-lib-auth_kl42bv1c": "rgba(0, 0, 0, .2)",
+    "--wallet-lib-auth_kl42bv5": "#000814",
+    "--wallet-lib-auth_kl42bv1b": "rgba(255, 255, 255, .5)",
+    "--accent-color-opacity-20": "#00000033",
+    "--wallet-lib-storefront_fqswqoa": "#E7E7E7",
+    "--wallet-lib-auth_kl42bvv": "#fef2dc",
+    "--footer-foreground-opacity-80": "#906545CC",
+    "--footer-foreground-opacity-30": "#9065454D"
+  }
+}
