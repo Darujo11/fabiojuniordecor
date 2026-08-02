@@ -64,4 +64,18 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://fabiojuniordecor.com.br/politica-privacidade.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>https://fabiojuniordecor.com.br/termos-de-uso.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>

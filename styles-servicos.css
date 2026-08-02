@@ -97,19 +97,20 @@
 
 .svc-trust-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: var(--space-4);
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   padding-top: var(--space-5);
-  max-width: 800px;
+  max-width: 820px;
 }
 
 .svc-trust-item strong {
   display: block;
   font-family: var(--font-family-heading);
-  font-size: 26px;
+  font-size: 23px;
   color: var(--accent-gold);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .svc-trust-item span {
@@ -186,6 +187,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: var(--space-4);
+}
+
+/* Em telas largas, 3 colunas fecham as 6 cards em 3+3 em vez de 4+2 orfao */
+@media (min-width: 1080px) {
+  .svc-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .svc-card {

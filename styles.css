@@ -1129,6 +1129,19 @@ h5 {
   color: var(--whatsapp-green);
 }
 
+/* Os badges de cidade sao links para as landing pages de servico */
+a.city-badge:hover,
+a.city-badge:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+}
+
+a.city-badge:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
 .installation-features-list {
   list-style: none;
   margin-bottom: var(--space-5);
@@ -2677,3 +2690,48 @@ h5 {
 }
 
 
+
+/* ==========================================================================
+   Rodapé — linha institucional (política, termos e contato)
+   ========================================================================== */
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+  font-size: 13.5px;
+}
+
+.footer-legal a {
+  color: var(--color-secondary-1);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(166, 132, 106, 0.4);
+}
+
+.footer-legal a:hover {
+  color: var(--color-text-1);
+  text-decoration-color: currentColor;
+}
+
+.footer-legal span {
+  opacity: 0.35;
+}
+
+@media (max-width: 576px) {
+  .footer-legal {
+    gap: 8px;
+    font-size: 13px;
+  }
+  .footer-legal span {
+    display: none;
+  }
+  .footer-legal a {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
