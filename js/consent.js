@@ -38,7 +38,7 @@
 
   var STORAGE_KEY = 'fjd_consent_v1';
   var MAX_AGE_DAYS = 365;
-  var POLICY_URL = 'politica-privacidade.html';
+  var POLICY_URL = '/politica-privacidade';
 
   /* ---------------------------------------------------------------- estado */
 

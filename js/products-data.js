@@ -5044,7 +5044,7 @@ const PRODUCTS_DATA = [
     "title": "Jogo Americano Bege Chevron",
     "rawSlug": "jogo-americano-bege-chevron-comprar-online",
     "imageUrl": "https://hubfotos.autozapx.com/i/0mcg2ToSU3r7",
-    "productPage": "jogo-americano-bege-chevron.html",
+    "productPage": "/jogo-americano-bege-chevron",
     "extraImages": [
       "./images/jogo-americano-bege-chevron-1.webp",
       "./images/jogo-americano-bege-chevron-2.webp"
@@ -5179,7 +5179,7 @@ const PRODUCTS_DATA = [
     "title": "Jogo Americano Floral Rosa",
     "rawSlug": "jogo-americano-floral-rosa-comprar-online",
     "imageUrl": "https://hubfotos.autozapx.com/i/ZDn0iRveejwH",
-    "productPage": "jogo-americano-floral-rosa.html",
+    "productPage": "/jogo-americano-floral-rosa",
     "extraImages": [
       "https://hubfotos.autozapx.com/i/LdObawi6DSXd",
       "https://hubfotos.autozapx.com/i/9x2Bkd0b82lx"
