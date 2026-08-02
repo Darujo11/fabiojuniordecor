@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  web:
+    image: fabiojuniordecor:latest
+    networks:
+      - Monadanet
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 128M
+        reservations:
+          memory: 32M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      update_config:
+        order: start-first
+        failure_action: rollback
+        delay: 5s
+      labels:
+        - traefik.enable=true
+
+        # www -> apex (canonical do site e o apex)
+        - traefik.http.middlewares.fabiojuniordecor-www.redirectregex.regex=^https?://www\.fabiojuniordecor\.com\.br/(.*)
+        - traefik.http.middlewares.fabiojuniordecor-www.redirectregex.replacement=https://fabiojuniordecor.com.br/$${1}
+        - traefik.http.middlewares.fabiojuniordecor-www.redirectregex.permanent=true
+
+        # Router principal (apex)
+        - traefik.http.routers.fabiojuniordecor.rule=Host(`fabiojuniordecor.com.br`)
+        - traefik.http.routers.fabiojuniordecor.entrypoints=websecure
+        - traefik.http.routers.fabiojuniordecor.tls=true
+        - traefik.http.routers.fabiojuniordecor.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.fabiojuniordecor.service=fabiojuniordecor
+        - traefik.http.routers.fabiojuniordecor.priority=10
+
+        # Router www (redireciona para o apex)
+        - traefik.http.routers.fabiojuniordecor-www.rule=Host(`www.fabiojuniordecor.com.br`)
+        - traefik.http.routers.fabiojuniordecor-www.entrypoints=websecure
+        - traefik.http.routers.fabiojuniordecor-www.tls=true
+        - traefik.http.routers.fabiojuniordecor-www.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.fabiojuniordecor-www.middlewares=fabiojuniordecor-www
+        - traefik.http.routers.fabiojuniordecor-www.service=fabiojuniordecor
+        - traefik.http.routers.fabiojuniordecor-www.priority=20
+
+        - traefik.http.services.fabiojuniordecor.loadbalancer.server.port=80
+
+networks:
+  Monadanet:
+    external: true

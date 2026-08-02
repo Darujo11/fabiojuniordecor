@@ -1,0 +1,8 @@
+.git
+.gitignore
+.claude
+instruções
+*.md
+stack.yml
+Dockerfile
+.dockerignore
