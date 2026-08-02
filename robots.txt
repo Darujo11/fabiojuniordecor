@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /instru%C3%A7%C3%B5es/
+
+# Crawlers de IA (ChatGPT, Perplexity, Gemini, Claude) — liberados de propósito.
+# Bloquear remove a marca das citacoes desses buscadores.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://fabiojuniordecor.com/sitemap.xml

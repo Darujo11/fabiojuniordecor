@@ -4877,5 +4877,555 @@ const PRODUCTS_DATA = [
       "Auto-Adesivo"
     ],
     "pdfCatalog": null
+  },
+  {
+    "id": 403,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Aura Placa 40x60cm",
+    "rawSlug": "jardim-artificial-aura-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/X6d7YLikFw3b",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 404,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Botanic Placa 40x60cm",
+    "rawSlug": "jardim-artificial-botanic-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/nBcsSAfFgnJo",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 405,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Buxinho Placa 40x60cm",
+    "rawSlug": "jardim-artificial-buxinho-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/BKWJj98AK7wv",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 406,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Éden Placa 40x60cm",
+    "rawSlug": "jardim-artificial-eden-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/eed0vw6mdTkB",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 407,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Lume Placa 40x60cm",
+    "rawSlug": "jardim-artificial-lume-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/fSvwowRt7Dg5",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 408,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Musgo Placa 50x50cm",
+    "rawSlug": "jardim-artificial-musgo-placa-50x50cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/BUKPtdLEble4",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "50x50cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 409,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Palma Placa 40x60cm",
+    "rawSlug": "jardim-artificial-palma-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/NxLKAi6BuFYD",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 410,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Serena Placa 40x60cm",
+    "rawSlug": "jardim-artificial-serena-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/EjlfMmeYvNnX",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 411,
+    "category": "Jardins Artificiais",
+    "title": "Jardim Artificial Viva Placa 40x60cm",
+    "rawSlug": "jardim-artificial-viva-placa-40x60cm-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/2Ybc2RBbVifr",
+    "isCover": false,
+    "tags": ["Jardim Vertical", "40x60cm"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 412,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Claro",
+    "rawSlug": "jogo-americano-azul-claro-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/1SwJAfLWaw5g",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 413,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Claro Mesclado",
+    "rawSlug": "jogo-americano-azul-claro-mesclado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/6QF4SFN5k3l8",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 414,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Escuro",
+    "rawSlug": "jogo-americano-azul-escuro-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/giyb9M539RdN",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 415,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Jeans",
+    "rawSlug": "jogo-americano-azul-jeans-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/6goTlsvr48tj",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 416,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Médio",
+    "rawSlug": "jogo-americano-azul-medio-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/YaSMSb41hCkC",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 417,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Azul Turquesa",
+    "rawSlug": "jogo-americano-azul-turquesa-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/mIdF1JxTaE7C",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Azul"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 418,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Bambu",
+    "rawSlug": "jogo-americano-bambu-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/Y25c0HWo0ZWa",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Rústico"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 419,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Bege Chevron",
+    "rawSlug": "jogo-americano-bege-chevron-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/0mcg2ToSU3r7",
+    "productPage": "jogo-americano-bege-chevron.html",
+    "extraImages": [
+      "./images/jogo-americano-bege-chevron-1.webp",
+      "./images/jogo-americano-bege-chevron-2.webp"
+    ],
+    "isCover": false,
+    "tags": ["Mesa Posta", "Bege"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 420,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Bege Mesclado",
+    "rawSlug": "jogo-americano-bege-mesclado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/4MTgmviBMfou",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Bege"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 421,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Bronze",
+    "rawSlug": "jogo-americano-bronze-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ldQbe4Qajfso",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Metalizado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 422,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Chevron",
+    "rawSlug": "jogo-americano-chevron-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ZOK6sn9Da2Jg",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Geométrico"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 423,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Cinza Chumbo",
+    "rawSlug": "jogo-americano-cinza-chumbo-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/wnnH06RmWvLe",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Cinza"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 424,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Cinza Listras",
+    "rawSlug": "jogo-americano-cinza-listras-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ZvqiWAyrDrnk",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Cinza"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 425,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Colorido Mesclado",
+    "rawSlug": "jogo-americano-colorido-mesclado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/CvK9akErmf8G",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Colorido"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 426,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Costela de Adão",
+    "rawSlug": "jogo-americano-costela-de-adao-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/SFl5JT9ttR0s",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Tropical"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 427,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Dourado Amarelo",
+    "rawSlug": "jogo-americano-dourado-amarelo-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/TwUklr4TpO7U",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Dourado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 428,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Dourado",
+    "rawSlug": "jogo-americano-dourado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/hI8YEAVazaqx",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Dourado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 429,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Dourado Floral",
+    "rawSlug": "jogo-americano-dourado-floral-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/GjF3XAAMnM0A",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Dourado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 430,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Dourado Liso",
+    "rawSlug": "jogo-americano-dourado-liso-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/1iezrsLQ9xev",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Dourado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 431,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Fendi Escuro",
+    "rawSlug": "jogo-americano-fendi-escuro-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/OxEEI5WO6Qj4",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Neutro"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 432,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Floral Rosa",
+    "rawSlug": "jogo-americano-floral-rosa-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ZDn0iRveejwH",
+    "productPage": "jogo-americano-floral-rosa.html",
+    "extraImages": [
+      "https://hubfotos.autozapx.com/i/LdObawi6DSXd",
+      "https://hubfotos.autozapx.com/i/9x2Bkd0b82lx"
+    ],
+    "isCover": false,
+    "tags": ["Mesa Posta", "Floral"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 433,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Folhas Cobre",
+    "rawSlug": "jogo-americano-folhas-cobre-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/XDrklyoSputh",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Folhas"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 434,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Folhas Dourado",
+    "rawSlug": "jogo-americano-folhas-dourado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/0OyxsAKJ8x3h",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Folhas"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 435,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Folhas Prata",
+    "rawSlug": "jogo-americano-folhas-prata-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/J0Okso0CDnYN",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Folhas"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 436,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Folhas Preto",
+    "rawSlug": "jogo-americano-folhas-preto-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ay401Myuppeo",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Folhas"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 437,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Marrom Acobreado",
+    "rawSlug": "jogo-americano-marrom-acobreado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/FLv3fbpbOQ6M",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Marrom"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 438,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Marrom Babados",
+    "rawSlug": "jogo-americano-marrom-babados-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/31HfSpnBfE2L",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Marrom"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 439,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Marrom Mesclado",
+    "rawSlug": "jogo-americano-marrom-mesclado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/2rVBjkTb1tzM",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Marrom"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 440,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Palm Leaf",
+    "rawSlug": "jogo-americano-palm-leaf-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/q45TPHFUgpch",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Tropical"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 441,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Prata Folhinhas",
+    "rawSlug": "jogo-americano-prata-folhinhas-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/8f5krN4Il0Z7",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Prata"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 442,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Preto Folhinhas",
+    "rawSlug": "jogo-americano-preto-folhinhas-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/Cyk107RFWKvF",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Preto"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 443,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Rosa Claro",
+    "rawSlug": "jogo-americano-rosa-claro-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/pi27ta3s48NB",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Rosa"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 444,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Rosa Pink",
+    "rawSlug": "jogo-americano-rosa-pink-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/BhSNguCBclTY",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Rosa"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 445,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Rosa Seco",
+    "rawSlug": "jogo-americano-rosa-seco-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/FsqgEZGshkMc",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Rosa"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 446,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Rosé Gold",
+    "rawSlug": "jogo-americano-rose-gold-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/ed2J0APs83ar",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Rosé Gold"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 447,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Trama Chumbo",
+    "rawSlug": "jogo-americano-trama-chumbo-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/6T3ZXhxWo195",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Trama"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 448,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Trama Dourado",
+    "rawSlug": "jogo-americano-trama-dourado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/UV5MmP23pC3Z",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Dourado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 449,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Trama Marrom",
+    "rawSlug": "jogo-americano-trama-marrom-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/3UXIVWCDM8VZ",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Marrom"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 450,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Trançado Bege",
+    "rawSlug": "jogo-americano-trancado-bege-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/o3r0Rk4IKyVY",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Trançado"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 451,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Trançado Colorido",
+    "rawSlug": "jogo-americano-trancado-colorido-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/TDjloCsRT22Y",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Colorido"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 452,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Tropical Preto",
+    "rawSlug": "jogo-americano-tropical-preto-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/txyIQVDFSEV7",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Tropical"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 453,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Verde Claro",
+    "rawSlug": "jogo-americano-verde-claro-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/02E83ie8t1Cl",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Verde"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 454,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Verde Médio",
+    "rawSlug": "jogo-americano-verde-medio-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/7izUWNoOiE93",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Verde"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 455,
+    "category": "Mesa Posta",
+    "title": "Jogo Americano Vermelho Metalizado",
+    "rawSlug": "jogo-americano-vermelho-metalizado-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/Xq6dTQZ8Fq0v",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Vermelho"],
+    "pdfCatalog": null
+  },
+  {
+    "id": 456,
+    "category": "Mesa Posta",
+    "title": "Porta-Copos Americano",
+    "rawSlug": "porta-copos-americano-comprar-online",
+    "imageUrl": "https://hubfotos.autozapx.com/i/9pTqrPKIQwUS",
+    "isCover": false,
+    "tags": ["Mesa Posta", "Porta Copos"],
+    "pdfCatalog": null
   }
 ];

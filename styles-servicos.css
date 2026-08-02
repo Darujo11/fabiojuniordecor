@@ -1,0 +1,508 @@
+/*
+  Fábio Junior Decor — Service Landing Pages
+  Aplicação / Colocação de Papel de Parede (Campos dos Goytacazes & Macaé)
+
+  Carregado APENAS nas landing pages de serviço, depois de styles.css.
+  Herda os tokens de :root definidos em styles.css.
+  Namespace: .svc-*
+*/
+
+.svc-hero {
+  background:
+    linear-gradient(135deg, rgba(144, 101, 69, 0.94) 0%, rgba(45, 30, 20, 0.97) 100%);
+  color: #FFFFFF;
+  padding: var(--space-7) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.svc-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12% 18%, rgba(197, 160, 89, 0.20), transparent 58%);
+  pointer-events: none;
+}
+
+.svc-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.svc-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-1);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: var(--space-5);
+}
+
+.svc-breadcrumb a:hover {
+  color: var(--accent-gold);
+}
+
+.svc-breadcrumb [aria-current] {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.svc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-1);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-radius: var(--radius-full);
+  padding: 7px 16px;
+  margin-bottom: var(--space-4);
+}
+
+.svc-hero h1 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  max-width: 20ch;
+  margin-bottom: var(--space-4);
+}
+
+.svc-hero h1 em {
+  font-style: normal;
+  color: var(--accent-gold);
+}
+
+.svc-lede {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 62ch;
+  margin-bottom: var(--space-5);
+}
+
+.svc-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.svc-trust-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  padding-top: var(--space-5);
+  max-width: 800px;
+}
+
+.svc-trust-item strong {
+  display: block;
+  font-family: var(--font-family-heading);
+  font-size: 26px;
+  color: var(--accent-gold);
+  line-height: 1.2;
+}
+
+.svc-trust-item span {
+  font-family: var(--font-family-1);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Shell de seção --- */
+.svc-section {
+  padding: var(--space-7) 0;
+}
+
+.svc-section--alt {
+  background: var(--color-surface-2);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.svc-section-head {
+  max-width: 740px;
+  margin-bottom: var(--space-6);
+}
+
+.svc-section-head h2 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(24px, 3.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-1);
+  margin-bottom: var(--space-3);
+}
+
+.svc-section-head p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.svc-prose {
+  max-width: 72ch;
+}
+
+.svc-prose p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.svc-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.svc-prose strong {
+  color: var(--color-text-1);
+}
+
+.svc-prose a,
+.svc-faq-answer a {
+  color: var(--color-secondary-2);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.svc-prose a:hover,
+.svc-faq-answer a:hover {
+  color: var(--color-secondary-1);
+}
+
+/* --- Cards de serviço --- */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: var(--space-4);
+}
+
+.svc-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.svc-section--alt .svc-card {
+  background: var(--color-primary);
+}
+
+.svc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-secondary-1);
+}
+
+.svc-card-icon {
+  font-size: 26px;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.svc-card h3 {
+  font-family: var(--font-family-heading);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-text-1);
+  margin-bottom: var(--space-2);
+}
+
+.svc-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+/* --- Passos numerados --- */
+.svc-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+  counter-reset: svcstep;
+  list-style: none;
+}
+
+.svc-steps li {
+  counter-increment: svcstep;
+  position: relative;
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--border-color);
+}
+
+.svc-steps li::before {
+  content: counter(svcstep, decimal-leading-zero);
+  position: absolute;
+  top: -15px;
+  left: 0;
+  font-family: var(--font-family-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-secondary-2);
+  background: var(--color-primary);
+  padding-right: 12px;
+  letter-spacing: 0.05em;
+}
+
+.svc-section--alt .svc-steps li::before {
+  background: var(--color-surface-2);
+}
+
+.svc-steps h3 {
+  font-family: var(--font-family-heading);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-1);
+}
+
+.svc-steps p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
+/* --- Checklist --- */
+.svc-checklist {
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.svc-checklist li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.svc-checklist li::before {
+  content: "\2713";
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--whatsapp-green);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+/* --- Chips de cobertura por bairro --- */
+.svc-area-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: var(--space-4);
+}
+
+.svc-area-chips li {
+  list-style: none;
+  font-family: var(--font-family-1);
+  font-size: 15px;
+  color: var(--color-secondary-2);
+  background: var(--color-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 7px 16px;
+}
+
+.svc-section--alt .svc-area-chips li {
+  background: var(--color-primary);
+}
+
+/* --- FAQ --- */
+.svc-faq {
+  max-width: 880px;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.svc-faq details {
+  background: var(--color-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.svc-section--alt .svc-faq details {
+  background: var(--color-primary);
+}
+
+.svc-faq details[open] {
+  border-color: var(--color-secondary-1);
+}
+
+.svc-faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-family-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 48px;
+}
+
+.svc-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.svc-faq summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-secondary-1);
+  transition: transform 0.25s ease;
+  line-height: 1;
+}
+
+.svc-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.svc-faq summary:hover {
+  color: var(--color-secondary-2);
+}
+
+.svc-faq-answer {
+  padding: 0 var(--space-5) var(--space-4);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* --- Faixa de CTA final --- */
+.svc-cta-band {
+  background: linear-gradient(135deg, #1C1917 0%, #3C281C 100%);
+  color: #FFFFFF;
+  padding: var(--space-7) 0;
+  text-align: center;
+}
+
+.svc-cta-band h2 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(24px, 3.6vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 auto var(--space-3);
+  max-width: 24ch;
+}
+
+.svc-cta-band p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 60ch;
+  margin: 0 auto var(--space-5);
+}
+
+.svc-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+/* --- Links cruzados entre cidades --- */
+.svc-crosslinks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.svc-crosslink {
+  display: block;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface-2);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.svc-section--alt .svc-crosslink {
+  background: var(--color-primary);
+}
+
+.svc-crosslink:hover {
+  border-color: var(--color-secondary-1);
+  transform: translateY(-2px);
+}
+
+.svc-crosslink strong {
+  display: block;
+  font-family: var(--font-family-heading);
+  font-size: 17px;
+  color: var(--color-text-1);
+  margin-bottom: 4px;
+}
+
+.svc-crosslink span {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .svc-hero {
+    padding: var(--space-6) 0;
+  }
+
+  .svc-hero h1 {
+    max-width: none;
+  }
+
+  .svc-hero-ctas .btn-primary,
+  .svc-hero-ctas .btn-whatsapp-large,
+  .svc-cta-actions .btn-primary,
+  .svc-cta-actions .btn-whatsapp-large {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .svc-section {
+    padding: var(--space-6) 0;
+  }
+
+  .svc-faq summary,
+  .svc-faq-answer {
+    padding-inline: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-card,
+  .svc-crosslink,
+  .svc-faq summary::after {
+    transition: none;
+  }
+
+  .svc-card:hover,
+  .svc-crosslink:hover {
+    transform: none;
+  }
+}

@@ -157,7 +157,7 @@ h5 {
   padding: 8px var(--space-4);
   text-align: center;
   position: relative;
-  z-index: 101;
+  z-index: 99; /* must stay under the header so the drawer covers it */
 }
 
 .announcement-content {
@@ -184,6 +184,51 @@ h5 {
   font-weight: 700;
 }
 
+/* Top Announcement Bar (variant with contact on the right) */
+.top-bar {
+  background-color: var(--color-secondary-2);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+  z-index: 99; /* must stay under the header so the drawer covers it */
+}
+
+.top-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 40px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.announcement-text {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  line-height: 1.35;
+}
+
+.announcement-text .divider {
+  opacity: 0.45;
+}
+
+.top-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+
+.top-contact a:hover {
+  opacity: 0.85;
+}
+
 /* Main Navigation Header */
 .main-header {
   position: sticky;
@@ -200,6 +245,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-4);
   height: 80px;
 }
 
@@ -207,6 +253,7 @@ h5 {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 .brand-logo img {
@@ -227,19 +274,34 @@ h5 {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-2);
   list-style: none;
 }
 
 .nav-link {
+  display: block;
   font-family: var(--font-family-1);
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-text-2);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
   position: relative;
   padding: 6px 0;
+}
+
+/* WhatsApp CTA that only exists inside the mobile drawer */
+.nav-drawer-cta {
+  display: none;
+}
+
+.nav-link.active {
+  color: var(--color-secondary-1);
+}
+
+.nav-link.active::after {
+  width: 100%;
 }
 
 .nav-link::after {
@@ -265,6 +327,7 @@ h5 {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .social-links-header {
@@ -296,10 +359,11 @@ h5 {
   background-color: var(--whatsapp-green);
   color: #FFFFFF;
   font-family: var(--font-family-1);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 10px 18px;
+  white-space: nowrap;
+  padding: 10px 16px;
   border-radius: var(--radius-2);
   display: inline-flex;
   align-items: center;
@@ -321,7 +385,11 @@ h5 {
   justify-content: space-between;
   width: 30px;
   height: 20px;
+  padding: 0;
   cursor: pointer;
+  position: relative;
+  z-index: 130; /* stays above the drawer so it can close it */
+  flex-shrink: 0;
 }
 
 .mobile-menu-btn span {
@@ -330,7 +398,40 @@ h5 {
   height: 3px;
   background-color: var(--color-secondary-2);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.mobile-menu-btn.is-open span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.mobile-menu-btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.is-open span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Mobile Drawer Backdrop */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.45);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  /* Below .main-header (z-index 100): the header creates its own stacking
+     context, so the drawer inside it can never outrank a higher backdrop. */
+  z-index: 90;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Hero Section */
@@ -1345,6 +1446,15 @@ h5 {
   color: var(--color-text-muted);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu,
+  .nav-menu.active-mobile,
+  .nav-backdrop,
+  .mobile-menu-btn span {
+    transition-duration: 0.01ms;
+  }
+}
+
 /* Media Queries (Responsive Breakpoints) */
 @media (max-width: 1024px) {
   .hero-grid {
@@ -1358,15 +1468,105 @@ h5 {
   }
 }
 
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* Handled via mobile drawer in JS */
+/* Header: drop the social icons before the nav starts to crowd */
+@media (max-width: 1400px) {
+  .social-links-header {
+    display: none;
   }
+}
+
+/* Header: below this the nav collapses into the side drawer */
+@media (max-width: 1320px) {
+  /* backdrop-filter turns the header into a containing block for fixed
+     children, which would trap the drawer inside it. The glass background is
+     already 94% opaque, so dropping the blur here costs nothing visually. */
+  .main-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--color-primary);
+  }
+
   .mobile-menu-btn {
     display: flex;
   }
-  .social-links-header {
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(340px, 84vw);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 104px var(--space-4) var(--space-5);
+    background: var(--color-surface-2);
+    border-left: 1px solid var(--border-color);
+    box-shadow: var(--shadow-drawer);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    visibility: hidden;
+    /* visibility flips instantly on open and only after the slide-out on close */
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.32s;
+    z-index: 120;
+  }
+
+  .nav-menu.active-mobile {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  }
+
+  .nav-menu li {
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-drawer-cta {
+    display: block;
+    border-bottom: none;
+  }
+
+  .nav-link {
+    font-size: 17px;
+    padding: 16px 2px;
+    white-space: normal;
+  }
+
+  .nav-link::after {
     display: none;
+  }
+
+  .nav-menu .btn-whatsapp-header {
+    justify-content: center;
+    width: 100%;
+    margin-top: var(--space-4);
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Keep the top bar to a single line instead of letting it wrap */
+  .top-bar {
+    font-size: 12px;
+  }
+  .announcement-text .divider,
+  .announcement-text span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar-container {
+    justify-content: center;
+    text-align: center;
   }
   .product-detail-grid {
     grid-template-columns: 1fr;
@@ -1383,6 +1583,23 @@ h5 {
 @media (max-width: 576px) {
   .brand-logo-text {
     font-size: 16px;
+  }
+  .brand-logo img {
+    height: 44px;
+  }
+  .header-container {
+    height: 68px;
+  }
+  /* Keep only the phone on the top bar so it never becomes a wall of text */
+  .announcement-text {
+    display: none;
+  }
+  /* The floating WhatsApp widget already covers the CTA on small screens */
+  .header-actions .btn-whatsapp-header {
+    display: none;
+  }
+  .nav-menu {
+    padding-top: 92px;
   }
 }
 
@@ -2203,4 +2420,260 @@ h5 {
   font-size: 12px;
   color: var(--color-text-muted);
 }
+
+/* ==========================================================================
+   Mesa Posta Hero Section & Interactive Styling
+   ========================================================================== */
+.mesa-hero-section {
+  position: relative;
+  padding: 60px 0 70px 0;
+  background: linear-gradient(135deg, #1C0F0A 0%, #3B1608 40%, #78350F 85%, #181411 100%);
+  background-image: 
+    radial-gradient(circle at 85% 20%, rgba(245, 158, 11, 0.2), transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(217, 119, 6, 0.15), transparent 45%);
+  border-bottom: 2px solid #D97706;
+  overflow: hidden;
+  color: #FFFFFF;
+}
+
+.mesa-hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .mesa-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.mesa-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 6px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 20px;
+}
+
+.mesa-breadcrumb a {
+  color: #FBBF24;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.mesa-breadcrumb a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.mesa-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  backdrop-filter: blur(10px);
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FBBF24;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+}
+
+.mesa-hero-title {
+  font-family: var(--font-family-heading);
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 576px) {
+  .mesa-hero-title {
+    font-size: 32px;
+  }
+}
+
+.mesa-hero-title span {
+  background: linear-gradient(90deg, #FBBF24 0%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mesa-hero-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 650px;
+  font-weight: 400;
+}
+
+.mesa-hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.35);
+  transition: all 0.3s ease;
+}
+
+.btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(217, 119, 6, 0.5);
+  background: linear-gradient(135deg, #FBBF24 0%, #D97706 100%);
+  color: #FFFFFF;
+}
+
+.btn-hero-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-hero-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+  background: #20BA5A;
+  color: #FFFFFF;
+}
+
+.mesa-hero-metrics {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mesa-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mesa-metric-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.mesa-metric-text strong {
+  display: block;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.mesa-metric-text span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Floating Visual Cards Showcase on Hero Right */
+.mesa-hero-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mesa-hero-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.mesa-hero-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(251, 191, 36, 0.6);
+}
+
+.mesa-hero-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.mesa-hero-card:hover img {
+  transform: scale(1.06);
+}
+
+.mesa-hero-card-body {
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.mesa-hero-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mesa-hero-card-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.25);
+  color: #FBBF24;
+}
+
 

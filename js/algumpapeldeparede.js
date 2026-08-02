@@ -267,14 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Menu Toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const navMenu = document.getElementById('nav-menu');
-  if (mobileMenuBtn && navMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active-mobile');
-    });
-  }
+  // Mobile menu drawer lives in js/nav.js (shared by all pages)
 
   // Initial Render
   renderTagChips();
