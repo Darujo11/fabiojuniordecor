@@ -16,4 +16,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://fabiojuniordecor.com/sitemap.xml
+Sitemap: https://fabiojuniordecor.com.br/sitemap.xml
