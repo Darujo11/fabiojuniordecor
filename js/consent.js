@@ -2,7 +2,10 @@
  * Fábio Junior Decor - Consentimento de cookies (LGPD)
  * =====================================================
  *
- * COMO ATIVAR (hoje o banner fica dormente de propósito):
+ * Em uso desde outubro/2026 pelo Pixel da Meta (js/meta.js, categoria
+ * "marketing"). Para acrescentar outro rastreamento, siga os passos abaixo.
+ *
+ * COMO ATIVAR:
  *
  * 1. Inclua este arquivo em todas as páginas, antes do </body>:
  *      <script src="js/consent.js"></script>
@@ -38,7 +41,10 @@
 
   var STORAGE_KEY = 'fjd_consent_v1';
   var MAX_AGE_DAYS = 365;
-  var POLICY_URL = '/politica-privacidade';
+  var POLICY_URL = '/politica-privacidade#cookies';
+  // Decisão desta visita. Garante que o aceite funcione mesmo quando o
+  // localStorage falha (navegação privada restrita).
+  var current = null;
 
   /* ---------------------------------------------------------------- estado */
 
@@ -55,6 +61,7 @@
   }
 
   function save(categories) {
+    current = { at: Date.now(), categories: categories };
     try {
       window.localStorage.setItem(
         STORAGE_KEY,
@@ -151,9 +158,9 @@
     banner.setAttribute('aria-modal', 'false');
     banner.setAttribute('aria-labelledby', 'fjd-consent-title');
     banner.innerHTML =
-      '<h2 id="fjd-consent-title">Podemos usar cookies de análise?</h2>' +
-      '<p>Eles nos ajudam a entender quais coleções despertam mais interesse e a melhorar o site. ' +
-      'Nada disso é necessário para navegar — você decide. Detalhes na ' +
+      '<h2 id="fjd-consent-title">Podemos usar cookies de medição?</h2>' +
+      '<p>Usamos o pixel da Meta (Facebook e Instagram) para saber quais anúncios trazem visitas ' +
+      'e contatos pelo WhatsApp. Nada disso é necessário para navegar — você decide. Detalhes na ' +
       '<a href="' + POLICY_URL + '">Política de Privacidade</a>.</p>' +
       '<div class="fjd-consent-actions">' +
       '<button type="button" class="fjd-reject">Somente essenciais</button>' +
@@ -204,10 +211,11 @@
   window.FJDConsent = {
     open: open,
     get: function () {
-      var s = read();
+      var s = read() || current;
       return s ? s.categories : null;
     },
     revoke: function () {
+      current = null;
       try {
         window.localStorage.removeItem(STORAGE_KEY);
       } catch (e) {}

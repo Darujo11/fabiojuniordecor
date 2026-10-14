@@ -6,3 +6,4 @@ instruções
 stack.yml
 Dockerfile
 .dockerignore
+infra

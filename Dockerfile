@@ -11,6 +11,7 @@ RUN rm -rf /usr/share/nginx/html/.git \
            /usr/share/nginx/html/.dockerignore \
            /usr/share/nginx/html/nginx.conf \
            /usr/share/nginx/html/stack.yml \
+           /usr/share/nginx/html/infra \
            /usr/share/nginx/html/instru* \
     && find /usr/share/nginx/html -name '*.md' -delete
 

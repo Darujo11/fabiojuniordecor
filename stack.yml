@@ -51,6 +51,64 @@ services:
 
         - traefik.http.services.fabiojuniordecor.loadbalancer.server.port=80
 
+  # API de Conversões da Meta (infra/capi/server.mjs). Recebe os eventos do
+  # navegador em fabiojuniordecor.com.br/api/eventos e repassa para a Graph API
+  # com o token, que mora num Docker secret e nunca chega ao navegador.
+  # Imagem construída na VPS: docker build -t fabiojuniordecor-capi:latest infra/capi
+  capi:
+    image: fabiojuniordecor-capi:latest
+    networks:
+      - Monadanet
+    secrets:
+      - source: fabiojuniordecor_meta_capi_token
+        target: meta_capi_token
+    read_only: true
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 96M
+        reservations:
+          memory: 32M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 60s
+      update_config:
+        order: start-first
+        failure_action: rollback
+        delay: 5s
+        monitor: 20s
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=Monadanet
+        # Prioridade maior que a dos routers do site (10 e 20): sem isso
+        # /api/eventos cai no nginx e o lado servidor some sem erro visível.
+        - traefik.http.routers.fabiojuniordecor-capi.rule=Host(`fabiojuniordecor.com.br`) && PathPrefix(`/api/eventos`)
+        - traefik.http.routers.fabiojuniordecor-capi.entrypoints=websecure
+        - traefik.http.routers.fabiojuniordecor-capi.tls=true
+        - traefik.http.routers.fabiojuniordecor-capi.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.fabiojuniordecor-capi.service=fabiojuniordecor-capi
+        - traefik.http.routers.fabiojuniordecor-capi.priority=30
+        - traefik.http.services.fabiojuniordecor-capi.loadbalancer.server.port=8081
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   Monadanet:
+    external: true
+
+# Criado à mão na VPS, uma vez, ANTES do primeiro deploy com o serviço capi.
+# Nome com prefixo porque secret do Swarm é global ao servidor compartilhado.
+secrets:
+  fabiojuniordecor_meta_capi_token:
     external: true
