@@ -39,13 +39,47 @@
     return m ? decodeURIComponent(m[1]) : undefined;
   }
 
-  // O _fbc só existe depois que o fbevents.js processa o fbclid. O PageView
-  // sai antes disso, então montamos o valor no formato que a Meta documenta.
-  function valorFbc() {
-    var existente = cookie('_fbc');
-    if (existente) return existente;
+  // Mesmo domínio que o fbevents.js usa (.fabiojuniordecor.com.br). Em
+  // localhost, só o host.
+  function dominioCookie() {
+    var partes = window.location.hostname.split('.');
+    if (partes.length < 2) return '';
+    var n = /\.(com|net|org|gov|edu)\.br$/.test(window.location.hostname) ? 3 : 2;
+    return '; domain=.' + partes.slice(-n).join('.');
+  }
+
+  function gravarCookie(nome, valor) {
+    document.cookie = nome + '=' + valor + '; max-age=' + 90 * 24 * 60 * 60 +
+      '; path=/' + dominioCookie() + '; SameSite=Lax';
+  }
+
+  // O fbevents.js cria o _fbp e o _fbc depois de baixado, e o PageView sai
+  // antes: sem eles a API de Conversões ia sem nenhum ID da Meta. Criamos no
+  // formato documentado pela Meta; o pixel reaproveita o que já existe.
+  function garantirCookiesMeta() {
+    if (!cookie('_fbp')) {
+      gravarCookie('_fbp', 'fb.1.' + Date.now() + '.' + Math.floor(1e9 + Math.random() * 9e9));
+    }
     var m = window.location.search.match(/[?&]fbclid=([^&]+)/);
-    return m ? 'fb.1.' + Date.now() + '.' + decodeURIComponent(m[1]) : undefined;
+    var fbclid = m ? decodeURIComponent(m[1]) : null;
+    var atual = cookie('_fbc');
+    // _fbc é sensível a maiúsculas: o fbclid vai como veio
+    if (fbclid && !(atual && atual.indexOf(fbclid) !== -1)) {
+      gravarCookie('_fbc', 'fb.1.' + Date.now() + '.' + fbclid);
+    }
+  }
+
+  // external_id: ID aleatório deste navegador (não é dado pessoal), o mesmo
+  // no pixel e no servidor. Já tem formato de SHA-256, ninguém o re-hasheia.
+  function idVisitante() {
+    var atual = cookie('fjd_vid');
+    if (atual && /^[0-9a-f]{64}$/.test(atual)) return atual;
+    var bytes = window.crypto.getRandomValues(new Uint8Array(32));
+    var novo = Array.prototype.map.call(bytes, function (b) {
+      return ('0' + b.toString(16)).slice(-2);
+    }).join('');
+    gravarCookie('fjd_vid', novo);
+    return novo;
   }
 
   function novoEventId() {
@@ -76,7 +110,7 @@
     s.src = 'https://connect.facebook.net/en_US/fbevents.js';
     document.head.appendChild(s);
 
-    fbq('init', PIXEL_ID);
+    fbq('init', PIXEL_ID, { external_id: externalId });
   }
 
   /* --------------------------------------------------------------- servidor */
@@ -86,8 +120,10 @@
       event_name: nome,
       event_id: eventId,
       event_source_url: window.location.origin + window.location.pathname,
+      referrer_url: document.referrer || undefined,
       fbp: cookie('_fbp'),
-      fbc: valorFbc()
+      fbc: cookie('_fbc'),
+      external_id: externalId
     });
     var blob = new Blob([corpo], { type: 'application/json' });
     // sendBeacon sobrevive à troca de aba do clique no WhatsApp; fetch com
@@ -112,6 +148,8 @@
 
   /* ---------------------------------------------------------------- início */
 
+  garantirCookiesMeta();
+  var externalId = idVisitante();
   carregarPixel();
   rastrear('PageView');
 

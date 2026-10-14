@@ -17,8 +17,12 @@ Instalado em 14/10/2026. Pixel ID `1054720430886519` (público).
   `js/meta.js` manda o mesmo evento para `/api/eventos`, onde o serviço
   `capi` (`infra/capi/server.mjs`, Node sem dependências) acrescenta IP e user
   agent e repassa à Graph API com o token. A Meta deduplica.
+- **Correspondência (EMQ).** O `js/meta.js` cria `_fbp`/`_fbc` antes do
+  primeiro evento (o fbevents.js só os cria depois, e o PageView ia sem eles),
+  e manda `external_id` (cookie `fjd_vid`, 64 hex aleatórios) no pixel e na
+  CAPI, além do `referrer_url`. O `capi` descarta `external_id` fora do formato.
 - **Proteções do `capi`.** Só aceita `Origin: https://fabiojuniordecor.com.br`,
-  eventos `PageView`/`Contact`/`Lead`, corpo ≤ 4 KB, 60 req/min por IP.
+  eventos `PageView`/`Contact`/`Lead`, corpo ≤ 8 KB, 60 req/min por IP.
 - **Roteamento.** Router Traefik `fabiojuniordecor-capi` com
   `PathPrefix(/api/eventos)` e prioridade 30 (o site usa 10 e 20).
   O nginx do site nunca vê `/api/eventos`.

@@ -35,7 +35,7 @@ const ORIGEM = process.env.SITE_ORIGIN || "https://fabiojuniordecor.com.br";
 const CODIGO_TESTE = process.env.META_TEST_EVENT_CODE || "";
 
 const EVENTOS_PERMITIDOS = new Set(["PageView", "Contact", "Lead"]);
-const TETO_CORPO = 4096;
+const TETO_CORPO = 8192;
 const TETO_POR_MINUTO = 60;
 const IDENTIDADE = "fabiojuniordecor-capi ok";
 
@@ -84,6 +84,12 @@ function texto(v, max) {
   return typeof v === "string" && v.length > 0 && v.length <= max ? v : undefined;
 }
 
+// external_id chega do navegador já no formato de um SHA-256 (64 hex).
+// Qualquer outra coisa é descartada.
+function hash(v) {
+  return typeof v === "string" && /^[0-9a-f]{64}$/.test(v) ? v : undefined;
+}
+
 // Valida o que veio do navegador. Nada aqui é confiável: o corpo é montado
 // pelo cliente.
 function validar(dados) {
@@ -104,12 +110,14 @@ async function enviarParaMeta(dados, ip, userAgent) {
         event_time: Math.floor(Date.now() / 1000),
         event_id: dados.event_id,
         event_source_url: dados.event_source_url,
+        referrer_url: texto(dados.referrer_url, 2048),
         action_source: "website",
         user_data: {
           client_ip_address: ip || undefined,
           client_user_agent: userAgent || undefined,
           fbp: texto(dados.fbp, 256),
           fbc: texto(dados.fbc, 512),
+          external_id: hash(dados.external_id),
         },
       },
     ],
